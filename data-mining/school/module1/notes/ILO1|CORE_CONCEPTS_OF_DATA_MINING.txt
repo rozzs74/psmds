@@ -1,0 +1,33 @@
+Core concepts of data mining
+1) What is Data Mining?
+	a) Articulate what data mining is within the context of its evolution, as an interdisciplinary subfield,  as an essential step of knowledge and pattern discovery, and as a type of business analytics; 
+	 	** It means what is the impact of using this technique that really solve problem in reality.
+	b) Point out practical applications of data mining as a tool for solving real-life problems;
+		** Use data mining as a tool for computational problem that turned into a product (application).
+	c) Synthesize the benefits of data mining in extracting knowledge from data; and
+		** What is the outcome of the knowledged learned from the data? Using the data mining.
+	e) Relate the challenges of data mining to a specific discipline
+		** What challenege you will face while using the data mining as a tool from a certain problem?.
+2) Data Mining Process Models
+	a) Create a data mining pipeline by interrelating the different stages of the data mining process models.
+		** Meaning, we want to solve a problem with a proper technique and processes on different phase.
+
+3) Crafting Data Mining Problem Statement
+	a) Craft a data mining problem statement based on a pipeline
+		** Create a step by step flow to solve an actual problem
+	b) Make distinctions(similarties) of descriptive and inferential analysis
+		** We know, we can get possible solutions, but how those solutions different from each other?
+	d) Synthesize the steps in solving a data mining problem
+		** Detailed steps of the solution in the problem.
+    e) Make distinctions of the five primary questions that data mining asks in solving problems
+        ** Actually, the five primary questions would help you to understand the problem with concrete solutions.
+    f) Identify the type of a data mining question;
+        ** What questions should we used for initial phase in data mining.
+    g) Craft a data mining question.
+        ** Create detailed choices and answers on the questions provided.
+4) Data preprocessing
+	a) Describe the various preprocessing methods;
+		** What are the available steps for creating solution in preprocessing phase.
+	b) Apply a data preprocessing method that is appropriate for a given data.
+		** Create a method that allows to process each step on the model.
+		** Its time to tell the created pre processing methods

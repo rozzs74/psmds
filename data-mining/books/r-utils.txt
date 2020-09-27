@@ -1,0 +1,181 @@
+library() = show all installed r libraries.
+library(tidyverse) = attach packages in your machine or script.
+install.packages(<library_name_here>) = to install r package
+install.packages(c("nycflights13", "gapminder", "Lahman")) = install multiple packages under c vector;  These packages provide data on airline flights, world development,
+and baseball that we’ll use to illustrate key data science ideas.
+
+sum(10,10,10,10) = to get total
+mean(10,10,10) = to get mean
+
+?<dataframe> = ?mpg or simply help
+?<function> = ?geom_point
+nrow(<data_frame>) = display number of rows in the data frame 
+ncol(<data_col>) = display number of columns in the data frame
+
+data(iris) - load data sets into r repl
+ summary(iris) - display summary of the data sets
+
+ r <- (1:10) = creates vector range 
+ r[1:5] = 1,2,3,4,5
+v <- c(98, 99, 100) = creats vector, or combine variables
+v[4] <- 101 = add number in the vector
+v[98:100] = 98,99,100
+
+
+# create a list of named items
+a <- list(aa=1, bb=2, cc=3) a
+a$aa
+1
+# add a named item to a list
+a$dd=4 
+a$dd
+4
+
+You can define a new list with the list() function. A list can be initialized with values or empty. Note that the named values in the list can be accessed using the dollar operator ($). Once referenced, they can be read or written. This is also how new items can be added to the list.
+
+
+A matrix is a table of data of the same type (e.g. numeric). It has dimensions (rows and columns) and the columns can be named.
+
+> data <- c(1, 2, 3, 4, 5, 6)
+> headings <- list(NULL, c("a","b","c"))
+> m <- matrix(data, nrow=2, ncol=3, byrow=TRUE, dimnames=headings)
+>m 
+
+     a b c 
+[1,] 1 2 3 
+[2,] 4 5 6
+
+A lot of useful plotting and machine learning algorithms require the data to be provided as
+a matrix. Note the syntax to index into rows [1,] and columns [,1] of a matrix.
+
+> m[1,1] 
+a 
+1 
+> m[1,]
+a b c 
+1 2 3
+> m[,1]
+[1] 1 4
+
+
+Data frames are useful for representing tables of your data in R.
+
+> years <- c(1980, 1985, 1990)
+> years
+[1] 1980 1985 1990
+> scores <- c(34, 44, 83)
+> df <- data.frame(years, scores)
+> df
+  years scores
+1  1980     34
+2  1985     44
+3  1990     83
+
+> df$years
+[1] 1980 1985 1990
+> df$scores
+[1] 34 44 83
+
+> df[,1]
+[1] 1980 1985 1990
+
+> df[1,]
+  years scores
+1  1980     34
+
+A matrix is a much simpler structure, intended for mathematical operations. A data frame is more suited to representing a table of data and is expected by modern implementations of machine learning algorithms in R. Note that you can index into rows and columns of a data frame just like you can for a matrix. Also note that you can reference a column using its name just like a list (df$years).
+
+
+clear r studio console use this in mac:
+option + command + l
+
+a <- 66
+if (a > 55) {
+  print("a is more than 55")
+} else {
+  print("A is less than or equal to 55")
+}
+
+> mylist <- c (55, 66, 77, 88, 99)
+> mylist
+[1] 55 66 77 88 99
+> for(value in mylist) {
+    print(value)
+}
+[1] 55
+[1] 66
+[1] 77
+[1] 88
+[1] 99
+
+# while loop
+a <- 100
+while (a < 500) {
+a <- a + 100 }
+a
+[1] 500
+
+numbers <- c(1, 2, 3, 4, 5, 6)
+mean(numbers)
+[1] 3.5
+
+> mysum <- function(a, b, c) {
++   sum <- a + b + c
++   return(sum)
++ }
+> 
+> a <- mysum(1,2,3)
+> print(a)
+[1] 6
+
+install.packages("caret")
+??caret
+
+
+
+A package can provide a lot of new functions. You can read up on a package on it’s CRAN page, but you can also get help for the package within R by calling the library() function with the argument help="PackageName". For example, you can get help for the caret package as follows:
+library(help="caret")
+
+q() = Quit r
+
+ Documentation: R installs with a lot of useful documentation. You can review it in the browser by typing 
+ > help.start()
+
+ a <- 10
+ if (a < 10) {
+     print("It is less than 10")
+ } else {
+     print("No it is not")
+ }
+
+
+ fruits <- c("apple", "mangoes", "lemon", "orange", "avocado")
+
+ for (fruit in fruits) {
+     print(fruit)
+ }
+
+ n <- 0
+ while (n < 1) {
+     n <- n + 1
+     print(n)
+ }
+
+ add <- function(x, y, z) {
+     c <- x + y + z
+     return c
+ }
+
+
+ add_numbers <- function(x, y, z) {
+     c <- x + y + z
+     return(c)
+ }
+
+To execute custom R script just run 
+Rscript <file_name>
+
+
+To get numbers of rows and columns use 
+dim(data_set)
+names(data_set) -> get all column names of your data set

@@ -1,0 +1,114 @@
+Types of Data sets or Data sets classification
+    - In statistical meaning its any organized collection of data.
+	- is a collection of related, discrete items of related data that may be accessed individually or in combination or managed as a whole entity.
+    - data sets are required in data analysis
+    - For example that a dataset is a set of values that have a common structure and are usually thematically related.
+	- Three general characteristics of data sets namely:
+		1) Dimensionality
+			- in statistics refers to how many data attributes a data set has.
+			- is the number of attributes that the objects in the data set have.
+			- Example
+				- healthcare data is notorious for having vast amounts of variables (e.g. blood pressure, weight, chololesterol level)
+			- High dimensional data 
+				-  means that the number of dimensions are staggeringly high — so high that calculations become extremely difficult. 
+			- Reduction of dimensionality
+				- means to simplify understanding of data, either numerically or visually. Data integrity is maintained. 
+				- tools for reducing dimensionality
+					1) multidimensional scaling
+					2) clustering
+			- if high number of attributes or high dimensionality, then it can be 
+				more difficult to analyse such a data set known as Curse of Dimensionality.
+			- Curse of dimensionality
+				-  Specifically, as dimensionality increases, 
+					the data becomes increasingly sparse(scattered) in the space that it occupies.
+				-  The more dimensions you add to a data set, the more difficult it becomes to predict certain quantities. 
+				- The statistical curse of dimensionality a sample size N will grow exponentially with data that has D dimensions
+		2) Sparsity
+			- sparsity in vocabulary means scattered around 
+			- For some data sets, such as those with asymmetric features, most attributes of an object have values of 0, in many case fewer than 
+				1% of the entries are non-zero.
+			- One way to think of sparsity is how space is empty (60%), whereas 40% of space is dense, or filled.
+			- Any data which as very large zero value and very little no zero value then it is called sparse data. And the way in which data is saved is sparse matrix, its a computer science terminology.
+			- This is called sparse data because most of the sensor outputs are zero. 
+				Which means those sensors are functioning properly but the actual reading is zero. Although this matrix has high dimensional data (12 axises) it can be said that it contains less information.
+			- Example
+				- An example of data sparsity is natural language processing
+				- A lot of times documents will be coded in a vector form where each entry represents wether a word is present.
+				    If it is present it will take a value 1 (or take the frequency of the word itself) and if it is not present it will be coded 0.
+		3) Resolution
+			- a firm decision to do or not do about something
+			- patterns are important in knowing the level of resolution, 
+				for example if the resolution is fine, the pattern is not visible and 
+				buried in noise, if the resolution is too coarse, the pattern may disappear
+			- Example is variations in atmospheric pressure on scale of hours, on a scale of months 
+            such phenomena not detectable.
+	- Three different kinds of data sets 
+		1) Record data 
+			- that consists of a collection of records, each of which consists of a "fixed set of attributes".	
+			- usually stored either in flat files or in relational databases.
+			- consist of categorigal attributes like 
+				a) Ordinal
+				b) Nominal
+			- can be continuous attributes
+				Variations and characteristics of record data
+					- Data matrix 
+						- data objects with only numeric attributes can be represented by an 
+							m by n matrix, where there are m rows, one for each object 
+							and n columns, one for each attributes
+						- the data objets can be thought of as points in a multi-dimensional space,
+							where each dimension represents a distinct attribute.
+						- usually values are floating point and fixed set of attributes
+					- Document Data or so called sparse data matrix or document-data-matrix
+						- each document becomes a "term" vector
+						- each term is a component (attribute) of the vector
+						- the value of each component is the number (discrete attribute) of times
+							the corresponding term occurs in the document.	
+						- word processing?
+						- is a special case of a data matrix in which the attributes are of the same type and are asymmetric; i.e., 
+							only non-zero values are important.
+					- Transaction Data
+						- a special type of record data where each record (transaction) involves a set of items
+						- consider a grocery store. The set of products purchased by a customer 
+							during one shopping trip constitutes a transaction while the individual products
+							that were purchased are the items.
+		2) Graph Data	
+			- Types 
+				1) Data with relationships among Objects: 
+					- the data objects are mapped to nodes of the graph, while the 
+					  relationships among objects are captured by the links between objects
+					  and link properties
+				2) Data with objects that are Graphs:
+					- if objects have structure that contain object sub objects that have
+						relationship, and frequently represented as graphs. Example is chemical compound
+						can be represented by a graph, where the nodes are atoms and the links between nodes are chemical bonds.
+			- world wide web
+			- molecular structures
+			- example: Generic graph and HTML links
+			- consists of vertices and nodes 
+			- a web page is an example of graph data
+		3) Ordered Data
+			Four types of data 
+				1) Sequential data (with timestamps)
+					- also referred to as "temporal" data, 
+					  can be thoughts of as an extension of record data, 
+					  where each record has a time associated with it. Consider a retail transaction data set that also stores the time at which the transaction took place
+			 	2) Sequence data (without timestamps)
+				 	- Sequence data consists of a data set that is a sequence of individual entities, such as a sequence of words or letters. 
+					  It is quite similar to sequential data, except that there are no time stamps; 
+					  instead, there are positions in an ordered sequence.Example of this is genetic 
+					  	information of plants
+				3) Time series data 
+					- Time series data is a special type of sequential data in which each record is a time series, i.e., a series of measurements taken over time. For example, 
+					  a financial data set might contain objects that are time series of the daily prices of various stocks.
+				4) Spatial data 
+					- Some objects have spatial attributes, such as positions or areas, as well as other types of attributes. An example of spatial 
+						 data is weather data (precipitation, temperature, pressure) that is collected for a variety of geographical locations.
+				- Average monthly temperature of land and ocean
+
+
+https://towardsdatascience.com/types-of-data-sets-in-data-science-data-mining-machine-learning-eb47c80af7a
+https://www.statisticshowto.com/dimensionality/#:~:text=Dimensionality%20in%20statistics%20refers%20to,one%20column%20representing%20each%20dimension.
+https://www.quora.com/What-is-a-clear-explanation-of-data-sparsity
+https://whatis.techtarget.com/definition/data-set
+https://stats.oecd.org/glossary/detail.asp?ID=542
+https://blog.ldodds.com/2013/02/09/what-is-a-dataset/

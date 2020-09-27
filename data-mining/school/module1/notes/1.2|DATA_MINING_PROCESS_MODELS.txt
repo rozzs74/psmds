@@ -1,0 +1,32 @@
+Objective: 
+	Create a data mining pipeline by interrelating the different stages of the data mining process models.
+
+Data mining process models
+Knowledge Discovery in Databases or simply (KDD) (CISTMEP)
+	1) Data Cleaning = is the removal of noise and inconsistent data.
+	2) Data Integration = is performed by combining multiple data sources.
+	3) Data Selection = is the retrieval of data relevant to the analysis from the database.
+	4) Data Transformation = is the consolidation of data into forms that are appropriate for mining by performing summary or aggregation operations.
+	5) Data Mining = is an essential process where intelligent methods are applied to extract data patterns.
+	6) Pattern Evaluation = is performed to identify the interesting patterns representing knowledge based on interestingness measures.
+	7) Knowledge Representation = is the application of visualization and knowledge representation techniques to present mined knowledge to users. 
+CRISP-DM (Cross industry process for data mining) 
+	- is an open standard process model that describes common approaches used by data mining experts. It is the most widely-used analytics model.
+	- created in 1996
+	- Six major phases
+		1) Business Understanding - is the initial stage of the CRISP-DM model.  It involves a clear understanding of business objectives and needs.  It is necessary to know the key factors that may influence the outcome of your project. 
+		2) Data Understanding - fundamental facts and figures collection are done from all available sources. Then the properties of data acquired are examined, and the quality of information is verified by answers to specific relevant questions concerning the completeness and accuracy of the material. 
+		3) Data Preparation - fter the sources are entirely identified, proper selection, cleansing, constructing, and formatting is done. Exploration of information may be executed for noticing the patterns in light of business understandings. 
+		4) Modeling - The selection of modeling techniques is the very first step to take, followed by the generation of the test scenario for validating the model’s quality. Generate a few more models and assess them to make sure that they fall in line with the business initiatives. 
+		5) Evaluation - The results of models are evaluated in the backdrop of business intentions. Then new objectives may sprout up owing to the new patterns discovered. This is an iterative process, and the decision whether to consider them or not has to be made in this step before moving on to the final phase. 
+		6) Data Presentation - he final information gathered has to be presented suitably to the stakeholders.  This has to be done as per their expectations and business requirements. The process may be simple or complex, depending on numerable factors. 
+SEMMA-PM (Statistical Analysis System SEMMA Process Model)
+	- SAS Institute defines data mining as the process of Sampling, Exploring, Modifying, Modeling, and Assessing (SEMMA) large amounts of data to uncover previously unknown patterns that can be utilized as a business advantage.
+	- 6 process in Statistical analysis System
+		1) Sample = Generate a representatie sample of data. The samples should be large enough to contain important information, yet small enough to process.
+		2) Explore = Visualizaztion and basic description of the data, the data by searching for anticipated relationships, unanticipated trends, and anomalies to gain understanding and ideas.
+		3) Modify = Select variables, transform variable representation,the data by creating, selecting, and transforming the variables to focus on the model selection process.
+		4) Model = Use variety of statistical and machine learning models, the data by using the analytical tools to search for a combination of the data that reliably predicts a desired outcome.
+		5) Assess = Evaluate the accuracy and usefulness of the models, the data by evaluating the usefulness and reliability of the findings from the data mining process.
+
+https://en.wikipedia.org/wiki/Cross-industry_standard_process_for_data_mining

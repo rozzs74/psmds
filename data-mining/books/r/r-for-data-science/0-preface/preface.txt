@@ -1,0 +1,34 @@
+Preface
+	- Data science is an exciting discipline that allows you to turn raw
+	  data into understanding, insight, and knowledge. The goal of R for
+	  Data Science is to help you learn the most important tools in R that
+	  will allow you to do data science. After reading this book, you’ll have
+	  the tools to tackle a wide variety of data science challenges, using the
+	  best parts of R.
+What you will learn 
+	- Data science is a huge field, and there’s no way you can master it by
+		reading a single book. The goal of this book is to give you a solid
+		foundation in the most important tools. Our model of the tools
+		needed in a typical data science project looks something like this (data-science-model-project.png)
+	- First you must import your data into R. This typically means that
+		you take data stored in a file, database, or web API, and load it into a
+		data frame in R. If you can’t get your data into R, you can’t do data science on it!
+	- Once you’ve imported your data, it is a good idea to tidy (arranged neatly in order) it.
+	- Tidying your data means storing it in a consistent form that matches the semantics of the dataset with the way it is stored.
+	- In brief, when your data is tidy, each column is a variable, and each row is an observa‐ tion. 
+	- Tidy data is important because the consistent structure lets you focus your struggle on questions about the data, not fighting to get the data into the right form for different functions.
+	- Once you have tidy data, a common first step is to transform it.
+	- Transformation includes narrowing in on observations of interest (like all people in one city, or all data from the last year), creating new variables that are functions of existing variables (like comput‐ ing velocity from speed and time), and calculating a set of summary statistics (like counts or means).
+	-  Together, tidying and transforming are called wrangling, because getting your data in a form that’s natu‐ ral to work with often feels like a fight!
+	- Once you have tidy data with the variables you need, there are two main engines of knowledge generation: visualization and modeling.
+	- These have complementary strengths and weaknesses so any real analysis will iterate between them many times.
+	- Visualization is a fundamentally human activity. A good visualiza‐ tion will show you things that you did not expect, or raise new ques‐ tions about the data. 
+	- A good visualization might also hint that you’re asking the wrong question, or you need to collect different data. Vis‐ ualizations can surprise you, but don’t scale particularly well because they require a human to interpret them.
+	- Models are complementary tools to visualization.
+	- Once you have made your questions sufficiently precise, you can use a model to answer them.
+	- Models are a fundamentally mathematical or compu‐ tational tool, so they generally scale well. 
+	- The last step of data science is communication, an absolutely critical part of any data analysis project.
+	- It doesn’t matter how well your models and visualization have led you to understand the data unless you can also communicate your results to others.
+	-  R is not just a programming language, but it is also an inter‐ active environment for doing data science.
+
+

@@ -1,0 +1,17 @@
+Topics
+	- Data and Data Types
+	- Data Quality
+	- Data Preprocessing
+	- Similarity and Dissimilarity
+	- Data exploration and Visualization
+
+
+1) What is Data? 
+	-  Fundamental meaning, a data is collection of "objects" defined by "attributes".
+		a) Attribute - is a "property or characteristic of an object".
+			Example:
+				1) Eye color of a person, temperature
+				2) Variables, field, characteristic, feature, predictor etc.
+		b) Collection  - "a collection of attributes" describe an object
+			Example
+				1) Other names record, point, case, sample, entity, instance etc.

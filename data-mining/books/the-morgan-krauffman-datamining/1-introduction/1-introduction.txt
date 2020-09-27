@@ -1,0 +1,133 @@
+Data mining
+	- also known as KDD (knowledge discovery from data)
+
+Why data mining? 
+	- We live in a world where vast amounts of data are collected daily. Analyzing such data is an important need.
+
+Data mining as large collection of data into knowledge
+	- data mining can turn a large collection of data into knowledge that can help meet a current global challenge.
+	- For example, Google’s Flu Trends uses specific search terms as indicators of flu activity. 
+		It found a close relationship between the number of people who search for flu-related information and the number of people who actually have flu symptoms. 
+		A pattern emerges when all of the search queries related to flu are aggregated. Using aggre- gated Google search data, Flu Trends can estimate 
+		flu activity up to two weeks faster than traditional systems can
+What is data mining?
+    - the term data mining is often used to refer to the entire knowledge discovery process
+	- How can I analyze these data? The world is data rich but information poor.	
+    - large data sets that is not utilising and kept it somewhere called data tombs (data archives that are seldom visited).
+    - In simple term, data mining is process of searching data for knowledge (interesting patterns).
+    - also known as knowledge mining from data or knowledge extraction, data/pattern analysis, data archaeology, and data dredging.
+    - more popular is that data mining is KDD (knowledge discovery from data).
+    - Data mining is the process of discovering interesting patterns and knowledge from large amounts of data. 
+        The data sources can include databases, data warehouses, the Web, other information repositories, or data that are streamed into the system dynamically.
+Data mining knowledge discovery process 
+    1) Data cleaning  - (to remove noise and inconsistent data) (Data preprocessing)
+    2) Data integration - (where multiple data sources may be combined) (Data preprocessing)
+        A popular trend in the information industry is to perform data cleaning and data integration as a preprocessing step,
+        where the resulting data are stored in a data warehouse.
+    3) Data selection - (where data relevant to the analysis task are retrieved from the database) (Data preprocessing)
+    4) Data transformation - (where data are transformed and consolidated into forms appropriate for mining by performing summary or aggregation operations) (Data preprocessing)
+    5) Data mining - (an essential process where intelligent methods are applied to extract data patterns)
+    6) Pattern evaluation - (to identify the truly interesting patterns representing knowledge based on interestingness measures
+    7) Knowledge presentation - (where visualization and knowledge representation tech- niques are used to present mined knowledge to users)
+    sometimes data transformation and consolidation are performed before the data selection process, particularly in the case of data warehousing.
+     Data reduction may also be performed to obtain a smaller representation of the original data without sacrificing its integrity
+
+What kinds of data can be mined?
+    - as general data mining can be applied to any kind of data as long as the data itself is meaningful for a target application.
+        a) database data
+        b) data warehouse
+            - is a repository of information collected from multiple sources, stored under a unified schema, and usually residing at a single site.
+            - datata warehouses are constructed via a process of data cleaning, data integration, data transformation, data loading, and peri- odic data refreshing. 
+            - The data are stored to pro- vide information from a historical perspective, such as in the past 6 to 12 months, and are typically summarized.
+            - For example, rather than storing the details of each sales transac- tion, the data warehouse may store a summary of the transactions per item type for each store or, summarized to a higher level, for each sales region.
+            - By providing multidimensional data views and the precomputation of summarized data, data warehouse systems can provide inherent support for OLAP. Online analyti- cal processing operations make use of background knowledge regarding the domain of the data being studied to allow the presentation of data at different levels of abstraction.
+            - A data warehouse is usually modeled by a multidimensional data structure, called a data cube, in which each dimension corresponds to an attribute or a set of attributes in the schema, and each cell stores the value of some aggregate measure such as count
+                or sum(sales amount). A data cube provides a multidimensional view of data and allows the precomputation and fast access of summarized data
+        c) transactional data
+        e) data streams
+        f) ordered/sequence databases
+        g) graph or networked data
+        h) spatial data, 
+        i) text data
+        j) multimedia data
+        k) www
+
+
+Data mining as multidisciplinary field 
+
+Statistics 
+    -  studies the collection, analysis, interpretation or explanation, and presentation of data. Data mining has an inherent connection with statistics.
+Machine learning 
+    - investigates how computers can learn (or improve their performance) based on data.
+    - Supervised learning 
+        - classification approach
+    - Unsupervised learning 
+        - clustering approach 
+    - Semi-supervised learning
+        - labeled and unlabeled
+    - Active learning
+        - input comes from the user.
+Database system and Data warehouses
+    - Database 
+        - Scaling, query, storage, optimization (indexing)
+    - Data warehouse
+        -  integrates data originating from multiple sources and various timeframes.
+        -  It consolidates data in multidimensional space to form partially materialized data cubes.
+
+Information Retrieval
+    - is the science of searching for documents or information in documents.
+    - difference between database system is that in IR, the data is unstructured only relying for keywords.
+    - Two models under IR which adopt probabilistic models.
+        1) Language model 
+            - is the probability density function that generates the bag of words in the document.
+        2) Topic model
+            - Furthermore, a topic in a set of text documents can be modeled as a probability dis- tribution over the vocabulary is called topic.
+Targeted Data mining application 
+    1) Business Intelligence 
+        - How important is business intelligence?” Without data mining, many businesses may not be able to perform effective market analysis
+        - Clearly, data mining is the core of business intelligence.
+        - Online analytical process- ing tools in business intelligence rely on data warehousing and multidimensional data mining.
+        - Classification and prediction techniques are the core of predictive analytics in business intelligence, for which there are many applications in analyzing markets, supplies, and sales.
+        - Moreover, clustering plays a central role in customer relationship management, which groups customers based on their similarities.
+        - Using characteriza- tion mining techniques, we can better understand features of each customer group and develop customized customer reward programs. 
+    2) Search engines
+        - is a specialized computer server that searches for information on the Web.   
+        - The search results of a user query are often returned as a list (sometimes called hits).
+        - The hits may consist of web pages, images, and other types of files. Some search engines also search and return data available in public databases or open directo- ries. Search engines differ from web directories in that web directories are maintained by human editors whereas search engines operate algorithmically or by a mixture of algorithmic and human input.
+        - Web search engines are essentially very large data mining applications
+        - Search engines pose grand challenges to data mining. First, they have to handle a huge and ever-growing amount of data
+        - typically, such data cannot be processed using one or a few machines. Instead, search engines often need to use computer clouds
+        -  web search engine use query classifier to construcy query that resolve output. An example is i.e., whether the search query “apple” is meant to retrieve information about a fruit or a brand of computers.
+Data mining functionalities
+    - are used to specify the kinds of patterns or knowledge to be found in data mining tasks.
+        - Classification
+        - Association
+        - Clustering
+        - Prediction
+        - Outlier detection
+        - Characterization
+        - Discrimination
+Major issues in Data mining
+    - Mining methodology  (Noise)
+        - consider issues data uncertainty, noise, and incompleteness.
+        - integrating methods from other disciplines
+    - User interaction (User level implemenation)
+        - user plays big role about interactive mining by having initial understanding on the data, general characteristics and estimate potential 
+            mining results.
+        - data mining query languages, Query languages (e.g., SQL) have played an important role in flexible searching because they allow users to pose ad hoc queries. Similarly, high-level data mining query languages or other high-level flexible user interfaces will give users the freedom to define ad hoc data mining tasks.
+        - presentation and visualization of data mining results
+    - Efficiency and Scalability (Speed)
+        - Efficiency and scalability are always considered when comparing data mining algo-rithms. As data amounts continue to multiply, these two factors are especially critical
+        - Data mining algorithms must be efficient and scalable in order to effectively extract information from huge amounts of data in many data repositories or in dynamic data streams. 
+        - The humongous size of many data sets, the wide distribution of data, and the computational complexity of some data mining methods are factors that motivate the development of parallel and dis- tributed data-intensive mining algorithms
+        - Cloud computing and cluster computing, which use computers in a distributed and collaborative way to tackle very large-scale computational tasks, are also active research themes in parallel data mining
+    - Diversity of Database Types (Complexity)
+        - The wide diversity of database types brings about challenges to data mining. These include
+        - Handling complex types of data: Diverse applications generate a wide spectrum of new data types, from structured data such as relational and data warehouse data to semi-structured and unstructured data; from stable data repositories to dynamic data streams; from simple data objects to temporal data, biological sequences, sensor data, spatial data, hypertext data, multimedia data, software program code, Web data, and social network data. 
+        - It is unrealistic to expect one data mining system to mine all kinds of data, given the diversity of data types and the different goals of data mining. Domain- or application-dedicated data mining systems are being constructed for in- depth mining of specific kinds of data.
+        - The construction of effective and efficient data mining tools for diverse applications remains a challenging and active area of research.
+        - Mining dynamic, networked, and global data repositories: Multiple sources of data are connected by the Internet and various kinds of networks, forming gigantic, dis- tributed, and heterogeneous global information systems and networks. The discovery of knowledge from different sources of structured, semi-structured, or unstructured yet interconnected data with diverse data semantics poses great challenges to data mining. 
+    - Data mining and society
+        - How does data mining impact society? What steps can data mining take to preserve the privacy of individuals?  Do we use data mining in our daily lives without even knowing that we do? These questions raise the following issues:
+        - Social impacts of data mining: With data mining penetrating our everyday lives, it is important to study the impact of data mining on society. How can we use data mining technology to benefit society? How can we guard against its misuse? The improper disclosure or use of data and the potential violation of individual privacy and data protection rights are areas of concern that need to be addressed.
+        - Insivisble data mining We cannot expect everyone in society to learn and master data mining techniques. More and more systems should have data mining func- tions built within so that people can perform data mining or use data mining results simply by mouse clicking, without any knowledge of data mining algorithms.  For example, when pur- chasing items online, users may be unaware that the store is likely collecting data on the buying patterns of its customers, which may be used to recommend other items for purchase in the future.

@@ -1,0 +1,103 @@
+Data Mining as Evolution of Information Technology
+    -  is the result of the natural evolution of information technology, specifically through the utilization of data management systems.
+    -  Brief history
+        - 1960s-1970s started the research and development of databases and programming language
+        - 1980s-onwards = in this year database software is somehow functional, so data analysis begins. Hardware evolves due to processing more data, so data warehouse introduce
+            as data repository archictecure.This is a repository of multiple heterogeneous data sources organized under a uni- fied schema at a single site to facilitate management decision making
+    - The demand for more advanced systems with increased storage capacities and processing power have contributed to the growth and availability of data.
+    - These developments have influenced more effective mechanisms for data storage, retrieval, and data processing, which resulted in the generation of voluminous data. 
+    - The process of decision-making needs larget amount of data. It's economic asset that helps the organization, increase revenue,
+        product quality, services and remain compentitive among the others.
+    - Transform "DATA TOMBS" into "GOLDEN NUGGETS" of knowledge.
+    - An example of evolution in the IT is clouds because its (Highly available, scalable, elastic, fault tolerant).
+
+Data Mining as Essential Step of Knowledge Discovery in Data
+    - is the process of digging through a collection of data to discover hidden connections and patterns for the prediction of future trends.
+    - It uses some techniques to perform the tasks of extracting knowledge from data.
+    - KDD (Knowledge discovery in data)
+    - We live in the world where amounts of data are big and collected daily, it is important to analyzing such data.
+Data Mining as Interdisciplinary Subfield
+    - Data is typically mined from databases or data warehouses, explored using some statistical techniques, and analyzed using machine learning algorithms to find patterns and connections.  
+    - It uses different technology to discover pattern and decide what is the best of it These are.
+        1) Machine Learning 
+        2) Statistics
+        3) Database
+    - Data mining—searching for knowledge (interesting patterns) in data.
+Data Mining as Step of the Process of Pattern Discovery
+    - We have essential steps to acquire knowledge in the data. Like
+        1) Data extraction from repository
+        2) Load into data mining database
+        3) Data transformation
+        4) Create algorithms for pattern discovery
+        5) Data visualization adn interpretion of rules.
+
+Applications of Data mining
+	- Data mining is used in different fields, but this are the common.
+	A) Target Marketing
+		- Data mining is used to understand customers better.  It can be used for the segmentation of market groups for the customization of promotional campaigns. 
+		- As an example here is search engine about fitness. A lot of people trying to find relevant ideas about fitness, its an opportunity
+			to target those people on selling products relevant to fitness (supplements, clothes, gears, etc).
+	B) Credit Risk Management
+		- Data mining is used by financial institutions to create models to "predict a borrower’s ability to take on and repay debt".
+		- Using a variety of demographic and personal information, these models automatically select an interest rate based on the level of risk assigned to the client. 
+		- As an example is a banking personal loan, the loan and interest would base on how much the borrower’s income gross.
+	C) Fraud Detection	
+		- Financial institutions apply data mining models to detect and stop fraudulent transactions automatically.
+		- By tracking spending habits, these models will flag anomalous transactions and instantly withhold payments until customers verify the purchase
+		- As an example is online banking transactions, with security verification is enabled for every payment. To avoid  multiple transactions without properly understand by the owner.
+	E) Healthcare
+	 	- Data mining is used to predict a patient’s likelihood for different health conditions based on risk factors.
+		- Demographic, family, and genetic data can be modeled to help patients make changes to prevent or mediate the onset of unfavorable health conditions. 
+		- As an example is here is from the hospital, how does Measuring Treatment Effectiveness, disease prevention but the challenge is data privacy, so the goal in Healthcare 
+			is not to protect it but to save lives.
+	F) Sentiment analysis 
+		- Data mining is utilized to gain an understanding of how a group of people feels towards a topic.  
+			Social media data is commonly used for this purpose.  
+		- As an example here is how many people are in favor of something different to others opinion? Like public post in the news using Facebook lots of people 
+			adding a comment about the topic. This is an opportunity to predict what does common behaviour people expresses about?
+	G) Recommender Systems
+		- Data mining is used in online systems to recommend products and services based on consumer behavior.   
+		- As an example here is when you search on the web and look for certain tech gadgets, you will notice sometimes on the page there is recommended gadget to purchase.
+	H) Spam Filtering	
+		- Data mining is also used to analyze the characteristics of malicious messages.  
+		- As an example is to detect if message is malicious from the email.
+	I) Education
+		- Data mining is used in education to predict students’ future learning behavior, and analyze student outcomes for improvement of teaching and learning strategies. 
+		- Data mining can also be used by institutions to make accurate decisions for the development of the educational system.
+		- As an example here is student survey about the environment, KPI for instructors etc.
+	J) Criminal Investigation
+		- Data mining is used for exploring and detecting crimes and their relationships with criminals.
+		- As an example here is the history of criminal record, like how does it relates?
+	K) Transportation
+	 	- Data mining helps determine the distribution schedules among warehouses and outlets and analyze loading patterns.
+		- As an example here is when will the customer receive the delivery of goods on certain area.
+
+Benefits of Data Mining
+	- The following are some of the benefits of data mining and their practical applications.
+	1) Automated Decision-Making
+		- Data Mining allows organizations to continually analyze data and automate both routine and critical decisions without the delay of human judgment. 
+	2) Accurate Prediction and Forecasting
+		- Data mining facilitates planning and provides managers with reliable forecasts based on past trends and current conditions. 
+	3) Cost Reduction
+		- Data mining allows for more efficient use and allocation of resources. Organizations can plan and make automated decisions with accurate forecasts that will result in maximum cost reduction.
+	4) Customer Insights 
+		- Firms deploy data mining models from customer data to uncover critical characteristics and differences among their customers. Data mining can be used to create personas and personalize each touchpoint to improve overall customer experience.
+
+Challenges of Data Mining 
+1) 4Vs
+	- 4vs: Volume(size), Velocity(speed), Variety(types), Value(scale) (Katal, Wazid, & Goudar, 2013) which means fall to data quality.
+2) Privacy and security
+	- this is typical and the same time normal. The question how would you deal with this constraint?
+3) Cost
+	- this one too, everything has a cost implication.
+
+https://www.usfhealthonline.com/resources/key-concepts/data-mining-in-healthcare/
+https://link.springer.com/article/10.1007/s10916-011-9710-5
+https://www.sciencedirect.com/science/article/pii/S1877050915036066
+https://www.zentut.com/data-mining/data-mining-applications/#:~:text=Summary%3A%20this%20article%20discusses%20the,healthcare%2C%20transportation%2C%20and%20medicine.&text=This%20tutorial%20illustrates%20some%20data,and%20insurance%2C%20transportation%20and%20medicine.
+https://bigdata-madesimple.com/14-useful-applications-of-data-mining/
+https://www.linkedin.com/pulse/electronic-banking-fraud-detection-using-data-mining-r-sayo-enoch/
+https://www.cnbc.com/id/100638141
+https://digital.hbs.edu/platform-rctom/submission/deltas-baggage-claim-digital-transformation/
+https://theleadershipnetwork.com/article/disney-digital-magic-big-data
+https://datascience.codata.org/articles/10.5334/dsj-2015-002/

@@ -1,0 +1,30 @@
+Getting to know your data, it's tempting to jump straight
+    The first major task of the data mining process, gaining such insight into the data will help with the subsequent analysis.
+        - You will want to know the following
+            1) What are the types of attributes or fields that make up your data?
+            2) What kind of values does each attribute have?
+            3) Which attributes are discrete, and which are continuous-valued?
+            4) What do the data look like?
+            5) How are the values distributed?
+            6) Are there ways we can visualize the data to get a better sense of it all?
+            7) Can we spot any outliers?
+            8) Can we measure the similarity of some data objects with respect to others? 
+    Basic statistical description and the following is the measures of central tendency which give us an idea of the “middle” or center of distribution.
+        - Given a temperature attribute, for example, we can determine its mean (average value)
+        - median (middle value),
+        - median (middle value),
+        - Knowing such basic statistics regarding each attribute makes it easier to fill in missing values, smooth noisy values, and spot outliers during data preprocessing.
+        - Quantile plots, histograms, and scatter plots are other graphic dis- plays of basic statistical descriptions, These can all be useful during data preprocessing and can provide insight into areas for mining.
+    Knowledge of the attributes and attribute values can also help in fixing inconsistencies incurred dur- ing data integration
+    The similarity/dissimilarity (clustering) between objects may also be used to detect out-liers in the data, or to perform nearest-neighbor classification.
+        - There are many measures for assessing similarity and dissimilarity. In general, such mea- sures are referred to as proximity measures.
+
+
+Data objects and Attribute types
+	- Data sets are made up of data objects
+		- data objects
+			- represents an entity—in a sales database
+			- typically described by attributes.
+
+What is an attribute?
+	- 

@@ -1,0 +1,86 @@
+Attribute Values
+    - An attribute holds a Values
+    - The same attribute can be mapped to different values  (Same attribute mapped to different values)
+        example
+            a) height can be measured in "feet" or "meters".
+    - Different attributes can be mapped to the same set of values (Same values mapped to different attributes)
+        example
+            a) Attribute values for ID and age are integers.
+
+Two main flavors of data
+1) Quantitative
+    - data deals with numbers and things you can measure objectively: dimensions such as height, width, and length. Temperature and humidity. Prices. Area and volume.
+2) Qualitative
+    - data deals with characteristics and descriptors that can't be easily measured, but can be observed subjectively—such as smells, tastes, textures, attractiveness, and color. 
+
+	Broadly speaking, when you measure something and give it a number value, you create quantitative data. 
+	 When you classify or judge something, you create qualitative data. 
+	 So far, so good. But this is just the highest level of data: there are also different types of quantitative and qualitative data.
+Attribute Classification
+    - Discrete attributes 
+        a) Finite (limited size) or countably infinite set of values
+        b) Often represented as integer variables or characters
+            example:
+                - integers
+                - zip codes, click counts, set of words, collection of documents, gender
+                - binary attributes such (1, 0) are special case of discrete values. It can be YES or NO, DEAD or ALIVE, 
+                    one and zero
+        c) For visualization discrete attributes, mostly frequently histograms (graph with a bar) are used. Because they represent relative frequencies of attribute values.
+                thus, histogram is actually a probability distribution of attribute values.
+        d) Discrete variables can take on either a finite number of values, or an infinite, but countable number of values. 
+            The number of patients that have a reduced tumor size in response to a treatment is an example of a discrete random variable that can take on a finite number of values. 
+            The number of car accidents at an intersection is an example of a discrete random variable that can take on a countable infinite number of values (there is no fixed upper limit to the count).
+        e) To model your data use "Binomial" and "Poisson"
+        f) Discrete attribute is a quantitave flavor
+        g) a general rule discrete is a count
+		h)  data is a count that can't be made more precise. Typically it involves integers. For instance, the number of children (or adults, or pets) in your family is discrete data
+			because you are counting whole, indivisible entities: you can't have 2.5 kids, or 1.3 pets.
+    - Continuous attributes
+        a) Has real numbers are attribute of value, such no limitation on the value itself. Theoretically can hold different value at all.
+        b) Typically represented as floaing-point variables (decimals).
+        c) Come from infinite set
+            example:
+                - temperature
+                - height
+                - weight
+        d) Continuous variables can take on infinitely many values, such as blood pressure or body temperature. 
+            Even though the actual measurements might be rounded to the nearest whole number, in theory, 
+            there is some exact body temperature going out many decimal places 
+            That is what makes variables such as blood pressure and body temperature continuous. 
+        e) To model your data use Gaussian and Lognormal.
+        f) Continuous attribute is a quantitave flavor
+        g) as a general rule continuous is a measurement
+		h) data, on the other hand, could be divided and reduced to finer and finer levels. For example, you can measure the height of your kids at progressively more precise scales—meters, centimeters, millimeters, and beyond—so height is continuous data.
+    - Test your understanding of Discrete vs Continuous
+        Number of emergency room patients - Discrete
+        Blood pressure of a patient - Continuous
+        Weight of a patient - Continuous
+        Pulse for a patient - Discrete
+        Emergency room wait time rounded to the nearest minute - Discrete
+        Tumor size - Continuous
+Continuous vs Discrete attributes
+
+
+Reference
+http://www.differencebetween.net/science/mathematics-statistics/difference-between-real-numbers-and-integers/
+https://stackoverflow.com/questions/1779622/continuous-vs-discrete-attributes
+https://www.sciencedirect.com/topics/computer-science/discrete-attribute
+https://en.wikipedia.org/wiki/Histogram
+https://www.mathsisfun.com/definitions/discrete-data.html
+https://www.mathsisfun.com/definitions/continuous-data.html
+https://www.mathsisfun.com/numbers/real-numbers.html
+https://www.graphpad.com/guides/prism/8/statistics/stat_what_are_binomial_variables.htm
+https://www.graphpad.com/guides/prism/8/curve-fitting/reg_poisson-regression.htm
+https://www.graphpad.com/guides/prism/8/statistics/importance_of_the_gaussian_distribution.htm
+https://www.graphpad.com/guides/prism/8/statistics/stat_the_lognormal_distribution.htm
+https://www.graphpad.com/support/faq/what-is-the-difference-between-ordinal-interval-and-ratio-variables-why-should-i-care/
+https://www.youtube.com/watch?v=LPHYPXBK_ks
+
+https://en.wikipedia.org/wiki/Binomial_distribution
+https://brilliant.org/wiki/poisson-distribution/#:~:text=The%20Poisson%20distribution%20is%20the,the%20drive%2Dthrough%20per%20minute.
+https://www.mathsisfun.com/data/standard-normal-distribution.html
+https://brilliant.org/wiki/log-normal-distribution/
+https://brilliant.org/wiki/normal-distribution/
+https://brilliant.org/wiki/binomial-distribution/
+https://stattrek.com/probability/set-and-subset.aspx
+https://blog.minitab.com/blog/understanding-statistics/understanding-qualitative-quantitative-attribute-discrete-and-continuous-data-types

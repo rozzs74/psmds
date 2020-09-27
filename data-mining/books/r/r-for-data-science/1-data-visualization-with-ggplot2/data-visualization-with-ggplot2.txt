@@ -1,0 +1,56 @@
+
+Explore
+    - The goal of the first part of this book is to get you up to speed with the basic tools of data exploration as quickly as possible.
+	- Data explo‐ ration is the art of looking at your data, rapidly generating hypothe‐ ses, quickly testing them, then repeating again and again and again.
+	- The goal of data exploration is to generate many promising leads that you can later explore in more depth.
+
+ggplot2
+    - ggplot2 implements the grammar of graphics, a coherent system for describing and building graphs.
+    - With ggplot2, you can do more faster by learning one system and applying it in many places.
+    - A data frame is a rectangular collection of vari‐ ables (in the columns) and observations (in the rows).
+    - ggplot(data = mpg)  + geom_point(mapping = aes(x=displ, y=hwy))
+    - ggplot(data = mpg) + geom_point(mapping = aes(x = cyl, y =hwy))
+
+
+
+    - Reusable template
+        ggplot(data = <DATA>) +
+      <GEOM_FUNCTION>(mapping = aes(<MAPPINGS>))
+
+    - ggplot(data=mpg) + geom_point(mapping=aes(x=displ,y=hwy,color=class)) --> aes-color 
+    - ggplot(data=mpg) + geom_point(mapping=aes(x=displ,y=hwy,size=class))  --> aes-size 
+    - ggplot(data=mpg) + geom_point(mapping=aes(x=displ,y=hwy,alpha=class)) --> aes-alpha
+    - ggplot(data=mpg) + geom_point(mapping=aes(x=displ,y=hwy,shape=class)) --> aes-shape
+    --  ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy), color = "blue") --> aes-color but custom
+
+
+    - ggplot(data=mpg) 
+        - is the function to create plot with data frame 
+    - geom_point()
+        - to create scatter plots 
+    - mapping()
+        - to reference the value for plot 
+    - aes()
+        - stands for aesthic to represent the graph 
+            - color 
+            - size 
+            - alpha 
+            - shape
+        - The aes() function gathers together each of the aesthetic mappings used by a layer and passes them to the layer’s mapping argument.
+        -  The syntax highlights a use‐ ful insight about x and y: the x and y locations of a point are them‐ selves aesthetics, visual properties that you can map to variables to display information about the data.
+    - Once you map an aesthetic, ggplot2 takes care of the rest
+
+facets
+    - One way to add additional variables is with aesthetics. Another way, particularly useful for categorical variables, is to split your plot into facets, subplots that each display one subset of the data.
+    - ggplot(data = mpg) +
+      geom_point(mapping = aes(x = displ, y = hwy)) +
+      facet_wrap(~ class, nrow = 2) 
+        Output: aes-facewrap
+
+      ggplot(data = mpg) +
+      geom_point(mapping = aes(x = displ, y = hwy)) +
+      facet_grid(drv ~ cyl)
+        Output: aes-facegrid
+
+        ggplot(data = mpg) + geom_point(mapping = aes(x = displ, y = hwy)) +  facet_wrap(~model, nrow = 2)
+            facet categorical value

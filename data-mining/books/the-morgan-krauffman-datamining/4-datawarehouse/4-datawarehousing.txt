@@ -1,0 +1,383 @@
+Data Warehouse
+	- generalize and consolidate data in multidimensional space.
+	- construction of data warehouse needed to implement data preprocessing (cleaning, integration, selection, transformation).
+	- provides OLAP (online analytical processing) tool for interactive analysis of multidimensional data of varied granularities.
+	- facilitates effective data gene- ralization and data mining
+	- data mining functionalities can integrated to OLAP to enhance interactive mining of knowledge at multiple levels of abstraction.
+	- important platform for data analysis, OLAP will be an important platform 
+	- There OLAP and data mining form an essential step in the knowledge discovery process.
+	- The data model for data warehouse is data cube, a multidimensional data.
+
+Basic concepts
+	- Three data warehouse models
+		1) Enterprise model
+		2) Data mart
+		3) Virtual warehouse
+	- Backend technology in data warehouse is ETL (extract, transform, load	)
+
+What is Data Warehouse?
+	- provides architectures and tools for business executives to system- atically organize, understand, and use their data to make strategic decisions
+	- are valuable tools in today’s competitive, fast-evolving world.
+	- is a weapon to retian customers by learning more about their needs
+	- refers to a data repository that is maintained separately from an organiza- tion’s operational databases. 
+	- allow for integration of a variety of application systems. 
+	- They support information processing by providing a solid platform of consolidated historic data for analysis.
+	- According to William H. Inmon, a leading architect in construction of data warehouse system
+	- is a subject-oriented, integrated, time-variant, and nonvolatile collection of data in support of management’s decision making process.
+		- Why subject-oriented?
+			- Hence, data warehouses typically provide a simple and concise view of particular subject issues by excluding data that are not useful in the decision support process.
+		- Why integrated?
+			- constructed by multiple heterogeneous source such as relational database, flat files and online transaction data.
+			- In this process, data cleaning and data techniques are applied
+		- Why time-variant?
+			-  Data are stored to provide information from an historic perspective (e.g., the past 5–10 years). 
+			- Every key structure in the data warehouse contains, either implicitly or explicitly, a time element.
+		- Why nonvolatile?
+			- A data warehouse is always a physically separate store of data trans- formed from the application data found in the operational environment
+			- Due to this separation, a data warehouse does not require transaction processing, recovery, and concurrency control mechanisms. 
+			- It usually requires only two operations in data accessing: initial loading of data and access of data
+	-In sum, a data warehouse is a semantically consistent data store that serves as a physical implementation of a decision support data model. It stores the information an enterprise needs to make strategic decisions. 
+		A data warehouse is also often viewed as an architecture, constructed by integrating data from multiple heterogeneous sources to support structured and/or ad hoc queries, analytical reporting, and decision making
+	- The utilization of a data warehouse often necessitates a collection of decision support technologies. This allows “knowledge workers” (e.g., managers, analysts, and executives) to use the warehouse to quickly and conveniently obtain an overview of the data, and to make sound decisions based on information in the warehouse. 
+	- How are organizations using the information from data warehouses?
+		- Many organizations use this information to support business decision-making activities, including
+			1) increasing customer focus, which includes the analysis of customer buying patterns (such as buying preference, buying time, budget cycles, and appetites for spending);
+			2) epositioning products and managing product portfolios by compar- ing the performance of sales by quarter, by year, and by geographic regions in order to fine-tune production strategies;
+			3) analyzing operations and looking for sources of profit; and
+			4) managing customer relationships, making environmental corrections, and managing the cost of corporate assets.
+	- However, a data warehouse brings high performance to the integrated heterogeneous database system because data are copied, preprocessed, integrated, anno- tated, summarized, and restructured into one semantic data store.
+- Differences between Operational Database Systems and Data Warehouses
+	- OLTP performs online transaction and query processing while OLAP, 
+	  Data warehouse systems, on the other hand, serve users or knowledge workers in the role of data analysis and decision making. Such systems can organize and present data in various formats in order to accommodate the diverse needs of different users. These systems are known as online analytical processing (OLAP) systems.
+
+	- User and system orientation
+		An OLTP system is customer-oriented and is used for transaction and query processing by clerks, clients, and information technology professionals. 
+		An OLAP system is market-oriented and is used for data analysis by knowledge workers, including managers, executives, and analysts.
+	- Data content 
+		- An OLTP system manages current data that, typically, are too detailed to be easily used for decision making.
+		- An OLAP system manages large amounts of historic data, provides facilities for summarization and aggregation, and stores and manages information at different levels of granularity. These features make the data easier to use for informed decision making.
+	- Database design 
+		- An OLTP uses entity-relationhip (ER) These features make the data easier to use for informed decision making.
+		- An OLAP system typically adopts either a star or a snowflake model d a subject-oriented database design.	
+	- View 
+		- An OLTP system focuses mainly on the current data within an enterprise or department, without referring to historic data or data in different organizations
+		- An OLAP system often spans multiple versions of a database schema, due to the evolutionary process of an organization. Because of their huge volume, OLAP data are stored on multiple storage media.
+	- Access patterns
+		- The access patterns of an OLTP system consist mainly of short, atomic transactions. Such a system requires concurrency control and recovery mech- anisms.
+		- However, accesses to OLAP systems are mostly read-only operations (because most data warehouses store historic rather than up-to-date information), although many could be complex queries.
+
+- But, Why Have a Separate Data Warehouse?
+	- A major reason for such a separation is to help promote the high performance of both systems.
+	- An operational database is designed and tuned from known tasks and workloads like indexing and hashing using primary keys, searching for particular records, and optimizing “canned” queries.
+	- On the other hand, data warehouse queries are often complex
+	- They involve the computation of large data groups at summarized levels, and may require the use of spe- cial data organization, access, and implementation methods based on multidimensional views.
+	- Processing OLAP queries in operational databases would substantially degrade the performance of operational tasks.
+	- An OLAP query often needs read-only access of data records for summarization and aggregation.
+	- In contrast, operational databases contain only detailed raw data, such as transactions, which need to be consolidated before analy- sis.
+	- Because the two systems provide quite different functionalities and require different kinds of data, it is presently necessary to maintain separate databases.
+	- However, many vendors of operational relational database management systems are beginning to opti- mize such systems to support OLAP queries.
+	- As this trend continues, the separation between OLTP and OLAP systems is expected to decrease.
+- Data Warehousing: A Multitiered Architecture
+	- Adopted three-tier architecture
+		1) Top tier or Frontend tools are the output
+			- Consists of 
+				- Query / Report 
+				- Analysis
+				- Data mining 
+			-  is a front-end client layer,  which contains query and reporting tools, analysis tools, and/or data mining tools 
+		2) Middle tier  (OLAP server) (multidimensional)
+			- Consists of
+				- OLAP server 
+				- that is typically implemented using either (1) a relational OLAP (ROLAP) model (i.e., an extended relational DBMS that maps oper- ations on multidimensional data to standard relational operations)
+				- a multi- dimensional OLAP (MOLAP) model (i.e., a special-purpose server that directly implements multidimensional data and operations)
+		3) Bottom tier (Data warehouse server)
+			- Consists of
+				- Monitoring
+				- Administration
+				- Data warehouse 
+				- Data Marts 
+			- The bottom tier is a warehouse database server that i	s almost always a relational database system.
+			- Back-end tools and utilities are used to feed data into the bot- tom tier from operational databases or other external sources.
+			- In this tier, data extraction, cleaning and transformation happening, to merge similar data from different sources into a unified format
+		4) Data (input)
+			- External sources 
+			- Operational Databases
+- Data Warehouse Models: Enterprise Warehouse, Data Mart, and Virtual Warehouse
+	- From the architecture point of view, there are three data warehouse models: the enterprise warehouse, the data mart, and the virtual warehouse.
+	- Enterprise warehouse 
+		- An enterprise warehouse collects all of the information about subjects spanning the entire organization.
+		- It provides corporate-wide data inte- gration, usually from one or more operational systems or external information providers, and is cross-functional in scope.
+		- It typically contains detailed data as well as summarized data, and can range in size from a few gigabytes to hundreds of gigabytes, terabytes, or beyond. 
+		- An enterprise data warehouse may be imple- mented on traditional mainframes, computer superservers, or parallel architecture platforms. It requires extensive business modeling and may take years to design and build.
+	- Data mart 
+		- A data mart contains a subset of corporate-wide data that is of value to a specific group of users. 
+		- The scope is confined to specific selected subjects.
+		- For example, a marketing data mart may confine its subjects to customer, item, and sales. The data contained in data marts tend to be summarized.
+		- Data marts are usually implemented on low-cost departmental servers that are Unix/Linux or Windows based.
+		- The implementation cycle of a data mart is more likely to be measured in weeks rather than months or years.
+		- However, it may involve complex integration in the long run if its design and planning were not enterprise-wide.
+		- Depending on the source of data, data marts can be categorized as independent or dependent
+			- independent data mart 
+				Independent data marts are sourced from data captured from one or more operational systems or external information providers, or from data generated locally within a particular department or geographic area.
+			- dependent data mart 
+				 data marts are sourced directly from enterprise data warehouses.
+		- Virtual warehouse
+			- A virtual warehouse is a set of views over operational databases.
+			- For efficient query processing, only some of the possible summary views may be materialized. 
+				A virtual warehouse is easy to build but requires excess capacity on operational database servers.
+	- “What are the pros and cons of the top-down and bottom-up approaches to data ware- house development?
+		1) The top-down development of an enterprise warehouse serves as a systematic solution and minimizes integration problems
+		2) However, it is expensive, takes a long time to develop, and lacks flexibility due to the difficulty in achieving consistency and consensus for a common data model for the entire organization.
+		3) The bottom- up approach to the design, development, and deployment of independent data marts provides flexibility, low cost, and rapid return of investment
+			It, however, can lead to problems when integrating various disparate data marts into a consistent enterprise data warehouse.
+	- A recommended approach for data warehouse development.
+		1) First, a high-level corporate data model is defined within a reasonably short period (such as one or two months), that provides a corporate-wide, consistent, integrated view of data among different subjects and potential usages. 
+		2)  Second, independent data marts can be implemented in parallel with the enterprise Second, independent data marts can be implemented in parallel with the enterprise
+		3) Third, distributed data marts can be constructed to integrate different data marts via hub servers
+		4) Finally, a multitier data warehouse is constructed where the enterprise warehouse is the sole custodian of all warehouse data, which is then distributed to the various dependent data marts.
+- ETL (Extraction, transformation, loading)
+	- Data warehouse systems use back-end tools and utilities to populate and refresh their data. These tools and utilities include the ff:
+		1) Data extraction, which tupically gathers data from multiple, heterogeneous, and external sources.
+		2) Data cleaning, which detects errors in the data and rectifies them when possible. 
+		3) Data transformation, which converts data from legacy or host format to warehouseformat.
+		4) Load, which sorts, summarizes, consolidates, computes views, checks integrity, and builds indices and partitions.
+		5) Refresh, which propagates the updates from the data sources to the warehouse.
+	- Data cleaning and data transformation are important steps in improving the data quality
+- Metadata repository
+	- Metadata are data about data
+	- When used in a data warehouse, metadata are the data that define warehouse objects.	
+	- Metadata are created for the data names and definitions of the given warehouse.
+	- Additional metadata are created and captured for timestamping any extracted data, the source of the extracted data, and missing fields that have been added by data cleaning or integration processes.
+	- A metadata repository should contain the following:
+		1) Data warehouse structure, which includes the warehouse schema, view, dimensions, hierarchies, and derived data definitions, as well as data mart locations and contents.
+		2) Operational metadata, which include data lineage (history of migrated data and the sequence of transformations applied to it)
+		3) Algorithms used for summarization - which include measure and dimension definition algorithms, data on granularity, partitions, subject areas, aggregation, summarization, and predefined queries and reports
+		4) Mapping from the operational environment to the data warehouse - which includes source databases and their contents, gateway descriptions, data partitions, data extraction, cleaning, transformation rules and defaults, data refresh and purging rules, and security (user authorization and access control).
+		5) Data related to system performance -  which include indices and profiles that improve data access and retrieval performance, in addition to rules for the timing and scheduling of refresh, update, and replication cycles.
+		6) Business metadata - which include business terms and definitions, data ownership information, and charging policies.
+	- Metadata play a very different role than other data warehouse data and are important for many reasons.
+	- For example, metadata are used as a directory to help the decision support system analyst locate the contents of the data warehouse, and as a guide to the data mapping when data are transformed from the operational environment to the data warehouse environment. 
+	- Metadata also serve as a guide to the algorithms used for summarization between the current detailed data and the lightly summarized data, and between the lightly summarized data and the highly summarized data. Metadata should be stored and managed persistently (i.e., on disk).
+- Data Warehouse Modeling: Data Cube and OLAP
+    - Data warehouses and OLAP tools are based on a "multidimensional data model". This model views data in the form of a data cube.
+	- 
+- Data Cube: A Multidimensional Data Model
+	- “What is a data cube?”
+		- A data cube allows data to be modeled and viewed in multiple dimensions. It is defined by dimensions and facts.
+		- In general terms, dimensions are the perspectives or entities with respect to which an organization wants to keep records. 
+		- For example, AllElectronics may create a sales data warehouse in order to keep records of the store’s sales with respect to the dimen- sions time, item, branch, and location. 
+		- A multidimensional data model is typically organized around a central theme, such as sales. This theme is represented by a fact table. Facts are numeric measures.
+		- The fact table contains the names of the facts, or measures, as well as keys to each of the related dimension tables.
+- Stars, Snowflakes, and Fact Constellations: Schemas for Multidimensional Data Models
+	- A data warehouse, however, requires a concise, subject-oriented schema that facilitates online data analysis.
+	- The most popular data model for a data warehouse is a multidimensional model, which can exist in the form of a star schema, a snowflake schema, or a fact constellation schema.
+		1) Star schema
+			- The most common modeling paradigm is the star schema, in which the data warehouse contains
+				a) a large central table (fact table) containing the bulk of the data, with no redundancy
+				b) a set of smaller attendant tables (dimension tables), one for each dimension. The schema graph resembles a starburst, with the dimension tables displayed in a radial pattern around the central fact table.
+                c) To minimize the size of the fact table the dimenstion identifiers are connected.
+        2) Snowflake schema
+            - The snowflake schema is a variant of the star schema model, where some dimension tables are normalized, thereby further splitting the data into additional tables. 
+            - The major difference between the snowflake and star schema models is that the dimension tables of the snowflake model may be kept in normalized form to reduce redundancies.
+            - Such a table is easy to maintain and saves storage space.
+            - Furthermore, the snowflake structure can reduce the effectiveness of browsing, since more joins will be needed to execute a query.
+            - The main difference between the two schemas is in the definition of dimension tables. The single dimension table for item in the star schema is normalized in the snowflake schema, resulting in new item and supplier tables.
+        3) Fact constellation or galaxy schema
+            - Sophisticated applications may require multiple fact tables to share dimension tables.
+            - This kind of schema can be viewed as a collection of stars, and hence is called a galaxy schema or a fact constellation.
+    - In data warehousing, there is a distinction between a data warehouse and a data mart.
+        - A data warehouse collects information about subjects that span the entire organization, such as customers, items, sales, assets, and personnel, and thus its scope is enterprise-wide.
+        - A data mart, on the other hand, is a department subset of the data warehouse that focuses on selected subjects, and thus its scope is department- wide. For data marts, the star or snowflake schema is commonly used, since both are geared toward modeling single subjects, although the star schema is more popular and efficient.
+
+- Dimensions: The Role of Concept Hierarchies
+    - A concept hierarchy defines a sequence of mappings from a set of low-level concepts to higher-level, more general concepts.
+	- Consider a concept hierarchy for the dimension location.
+	- A concept hierarchy that is a total or partial order among attributes in a database schema is called a schema hierarchy. 
+	- Data mining systems should provide users with the flexibility to tailor predefined hierarchies according to their particular needs.
+	- Concept hierarchies may also be defined by discretizing or grouping values for a given dimension or attribute, resulting in a set-grouping hierarchy.
+	- Concept hierarchies may be provided manually by system users, domain experts, or knowledge engineers, or may be automatically generated based on statistical analysis of the data distribution.
+- Measures: Their Categorization and Computation
+	- How are measures computed?
+		- To answer this question, we first study how measures can be categorize
+		- Note that a multidimensional point in the data cube space can be defined, by a set of dimension–value pairs; for example, ⟨time = “Q1”, location = “Vancouver”, item = “computer”⟩.
+		-  A data cube measure is a numeric function that can be evaluated at each point in the data cube space.
+		- Three categories of measurement 
+			1) Distributive 
+				- An aggregate function i sdistributive if it can be computed in a distributed manner as follows.
+				- Suppose the data are partitioned into n sets. We apply the func- tion to each partition, resulting in n aggregate values. 
+				- example of distributve aggregate function
+					 a) sum()
+					 b) computing sum()
+					 c) count()
+					 d) min()
+					 e) max()
+			2) Algebraic 
+				- Anaggregatefunctionisalgebraicifitcanbecomputedbyanalgebraicfunc- tion with M arguments (where M is a bounded positive integer), each of which is obtained by applying a distributive aggregate function.
+			3) Holistic 
+				- An aggregate function is holistic if there is no constant bound on the stor- age size needed to describe a subaggregate. That is, there does not exist an algebraic function with M arguments (where M is a constant) that characterizes the compu- tation.
+				- min(), median(), mode(), rank()
+
+- Typical OLAP Operations
+	- “How are concept hierarchies useful in OLAP?”
+		- In the multidimensional model, data are organized into multiple dimensions, and each dimension contains multiple levels of abstraction defined by concept hierarchies.
+		- OLAP operations 
+			1) Roll-up
+				- The roll-up operation (also called the drill-up operation by some vendors) performs aggregation on a data cube
+			2) Drill-down
+				- It navigates from less detailed data to more detailed data. Drill-down can be realized by either stepping down a concept hierarchy for a dimension or introducing additional dimensions.
+- OLAP Systems versus Statistical Databases
+	- A statistical database is a database system that is designed to support statistical applications.
+	- While SDBs tend to focus on socioeconomic applications, OLAP has been targeted for business applications. 
+	- Privacy issues regarding concept hierarchies are a major concern for SDBs.
+- A Starnet Query Model for Querying Multidimensional Databases
+	- The querying of multidimensional databases can be based on a starnet model, which consists of radial lines emanating from a central point, where each line represents a concept hierarchy for a dimension. 
+	- Each abstraction level in the hierarchy is called a footprint. These represent the granularities available for use by OLAP operations such as drill-down and roll-up.
+-  Data Warehouse Design and Usage
+	- What goes into a data warehouse design? How are data warehouses used?  How do data warehousing and OLAP relate to data mining?
+	- A Business Analysis Framework for Data Warehouse Design
+		- What can business analysts gain from having a data warehouse?
+			1) Having a data warehouse may provide a competitive advantage by presenting relevant information from which to measure performance and make critical adjustments to help win over competitors.
+			2) Data warehouse can enhance business productivity because it is able to quickly and efficiently gather information that accurately describes the organization.
+			3) Data warehouse facilitates customer relationship management because it provides a consistent view of customers and items across all lines of business, all departments, and all markets.
+			4) Finally, a data warehouse may bring about cost reduction by tracking trends, patterns, and exceptions over long periods in a consistent and reliable manner. 
+
+		- To design an effective data warehouse we need to understand and analyze busi- ness needs and construct a business analysis framework. 
+		- The construction of a large and complex information system can be viewed as the construction of a large and complex building, for which the owner, architect, and builder have different views.
+		- These views are combined to form a complex framework that represents the top-down, business-driven, or owner’s perspective, as well as the bottom-up, builder-driven, or implementor’s view of the information system.
+		- Four different views regarding data warehouse 
+			1) Top-down view - allows the selection of the relevant information necessary for the data warehouse. This information matches current and future business needs.
+			2) Data source view - exposes the information being captured, stored, and man- aged by operational systems. This information may be documented at various levels of detail and accuracy, from individual data source tables to integrated data source tables.  Data sources are often modeled by traditional data modeling techniques, such as the entity-relationship model or CASE (computer-aided software engineering) tools.
+			3) Data warehouse view - includes fact tables and dimension tables. It represents the information that is stored inside the data warehouse, including precalculated totals and counts, as well as information regarding the source, date, and time of origin, added to provide historical context.
+			4) Business query view - is the data perspective in the data warehouse from the end-user’s viewpoint.
+		- Building and using a data warehouse is a complex task because it requires business skills, technology skills, and program management skills.
+			1) Business skills - building a data warehouse involves understanding how systems store and manage their data, how to build extractors that transfer data from the operational system to the data warehouse, and how to build warehouse refresh software that keeps the data warehouse reasonably up-to-date with the operational system’s data.
+					Using a data warehouse involves under- standing the significance of the data it contains, as well as understanding and translating the business requirements into queries that can be satisfied by the data warehouse.
+			2) Technology skills -  data analysts are required to understand how to make assessments from quantitative information and derive facts based on conclusions from historic information in the data warehouse. 
+					These skills include the ability to discover patterns and trends, to extrapolate trends based on history and look for anomalies or paradigm shifts, and to present coherent managerial recommendations based on such analysis. 
+			3) Program management skills - involve the need to interface with many technologies, vendors, and end-users in order to deliver results in a timely and cost- effective manner.
+
+- Data Warehouse Design Process
+	- A data warehouse can be built using a top-down approach, a bottom-up approach, or a combination of both.
+		1) Top-down approach 
+			- tarts with overall design and planning
+			- It is useful in cases where the technology is mature and well known, and where the business problems that must be solved are clear and well understood
+		2) Bottom-up approach
+			- starts with experiments and prototype
+			- This is useful in the early stage of business modeling and technology development
+			- It allows an organization to move forward at considerably less expense and to evaluate the technological benefits before making significant commitments.
+		3) Combined approache
+			- an organization can exploit the planned and strategic nature of the top-down approach while retaining the rapid implementation and opportunistic application of the bottom-up approach.
+
+	- From the software engineering point of view, the design and construction of a data warehouse may consist of the following steps:	
+		a) Planning 
+		b) Requirements study
+		c) Problem analysis
+		d) Warehouse design
+		e) Data integration
+		f) Testing 
+		g) Deployment of the data warehouse
+	-  Large software systems can be developed using one of two methodologies:
+		1) Waterfall method 
+			- performs a structured and systematic analysis at each step before proceeding to the next, which is like a waterfall, falling from one step to the next.
+		2) Spiral method
+			- nvolves the rapid generation of increasingly functional systems, with short intervals between successive releases. 
+	-  This is considered a good choice for data warehouse development, especially for data marts, because the turnaround time is short, modifications can be done quickly, and new designs and technologies can be adapted in a timely manner.
+	
+	- In general, the data warehouse design process consists of the following steps
+		1)  Choose a business process to model
+			(e.g., orders, invoices, shipments, inventory, account administration, sales, or the general ledger)
+			- If the business process is orga- nizational and involves multiple complex object collections, a data warehouse model should be followed.
+			- However, if the process is departmental and focuses on the analysis of one kind of business process, a data mart model should be chosen.
+		2) Choose the business process grain
+			- which is the fundamental, atomic level of data to be represented in the fact table for this process (e.g., individual transactions, individual daily snapshots, and so on).
+		3) Choose the dimensions 
+			- that will apply to each fact table record.
+			- Typical dimensions are time, item, customer, supplier, warehouse, transaction type, and status.
+		4) Choose the measures
+			- that will populate each fact table record
+			- Typical measures are numeric additive quantities like dollars sold and units sold.
+	- Because data warehouse construction is a difficult and long-term task, its implementation scope should be clearly defined.
+	- The goals of an initial data warehouse implementation should be specific, achievable, and measurable.
+	- This involves determining the time and budget allocations, the subset of the organization that is to be modeled, the number of data sources selected, and the number and types of departments to be served.
+	- Once a data warehouse is designed and constructed, the initial deployment of the warehouse includes initial installation, roll-out planning, training, and orientaion.
+	- Platform upgrades and maintenance must also be considered.
+	- Data warehouse administration
+		1) data refreshment
+		2) data source synchronization
+		3) planning for disaster recovery
+		4) managing access control and security
+		5) managing data growth
+		6) man- aging database performance
+		7) and data warehouse enhancement and extension
+	- Scope management includes controlling the number and range of queries, dimensions and reports.
+	- limiting the data warehouse’s size; or limiting the schedule, budget, or resources.
+	-  Data warehouse development tools provide functions to define and edit metadata repository contents (e.g., schemas, scripts, or rules), 
+		answer queries, output reports, and ship metadata to and from relational database system catalogs.
+	- Planning and analysis tools study the impact of schema changes and of refresh performance when changing refresh rates or time windows.
+
+
+- Data Warehouse Usage for Information Processing
+	- Data warehouses and data marts are used in a wide range of applications.
+	- Business executives use the data in data warehouses and data marts to perform data analysis and make strategic decisions.
+	- In many firms, data warehouses are used as an integral part of a plan-execute-assess “closed-loop” feedback system for enterprise management.
+	- Data warehouses are used extensively in banking and financial services, consumer goods and retail distribution sectors, and controlled manufacturing such as demand-based production.
+	- Typically, the longer a data warehouse has been in use, the more it will have evolved.
+	- Initially, the data warehouse is mainly used for generating reports and answering predefined queries.
+	- Progressively, it is used to analyze summarized and detailed data, where the results are presented in the form of reports and charts.
+    - Later, the data warehouse is used for strategic purposes, per- forming multidimensional analysis and sophisticated slice-and-dice operations.
+    - Finally, the data warehouse may be employed for knowledge discovery and strategic decision making using data mining tools.
+    -  In this context, the tools for data warehousing can be categorized into access and retrieval tools, database reporting tools, data analysis tools, and data mining tools.
+    - There are three kinds of data warehouse applications: information processing, analytical processing, and data mining.
+        1) Information processing
+            - supports querying, basic statistical analysis, and reporting using crosstabs, tables, charts, or graphs.
+            - A current trend in data warehouse information processing is to construct low-cost web-based accessing tools that are then integrated with web browsers.
+        2) Analytical processing
+            - supports basic OLAP operations, including slice-and-dice, drill-down, roll-up, and pivoting.
+            -  It generally operates on historic data in both sum- marized and detailed forms.
+            - The major strength of online analytical processing over information processing is the multidimensional data analysis of data warehouse data.
+        3) Data mining 
+            - supports knowledge discovery by finding hidden patterns and associa- tions, constructing analytical models, performing classification and prediction, and presenting the mining results using visualization tools.
+    - How does data mining relate to information processing and online analytical processing?
+        - Information processing, based on queries, can find useful information. However, answers to such queries reflect the information directly stored in databases or com- putable by aggregate functions.
+		- They do not reflect sophisticated patterns or regularities buried in the database. Therefore, information processing is not data mining.
+		- Online analytical processing comes a step closer to data mining because it can derive information summarized at multiple granularities from user-specified subsets of a data warehouse.
+		- Because data mining systems can also mine generalized class/concept descriptions, this raises some interesting questions: “Do OLAP systems perform data mining? Are OLAP systems actually data mining systems?”
+		- The functionalities of OLAP and data mining can be viewed as disjoint
+			1) OLAP is a data summarization/aggregation tool that helps simplify data analysis
+			2) While data mining allows the automated discovery of implicit patterns and interesting knowledge hidden in large amounts of data. 
+			3) OLAP tools are targeted toward simplifying and supporting interactive data analysis, whereas the goal of data mining tools is to automate as much of the process as possible, while still allowing users to guide the process.
+			4) In this sense, data mining goes one step beyond traditional online analytical processing.
+			5) An alternative and broader view of data mining may be adopted in which data mining covers both data description and data modeling.
+			6)  Because OLAP systems can present general descriptions of data from data warehouses,  OLAP functions are essentially for user-directed data summarization and comparison (by drilling, pivoting, slicing, dic- ing, and other operations).
+		- Data mining can help business managers find and reach more suitable customers, as well as gain critical business insights that may help drive market share and raise profits.
+		- In addition, data mining can help managers under- stand customer group characteristics and develop optimal pricing strategies accordingly.
+		- It can correct item bundling based not on intuition but on actual item groups derived from customer purchase patterns, reduce promotional spending, and at the same time increase the overall net effectiveness of promotions.
+- From Online Analytical Processing to Multidimensional Data Mining
+	- The data mining field has conducted substantial research regarding mining on various data types, including relational data, data from data warehouses, transaction data, time-series data, spatial data, text data, and flat files.
+	-  Multidimensional data mining (also known as exploratory multidimensional data mining, online analytical mining, or OLAM) integrates OLAP with data mining to uncover knowledge in multidimen- sional databases.
+	- Among the many different paradigms and architectures of data mining systems, multidimensional data mining is particularly important for the following reasons:
+		1) High quality of data in data warehouses
+			- Most data mining tools need to work on integrated, consistent, and cleaned data, which requires costly data cleaning, data integration, and data transformation as preprocessing steps.
+			-  A data warehouse con- structed by such preprocessing serves as a valuable source of high-quality data for OLAP as well as for data mining. Notice that data mining may serve as a valuable tool for data cleaning and data integration as well.
+		2) Available information processing infrastructure surrounding data warehouses
+			- Comprehensive information processing and data analysis infrastructures have been or will be systematically constructed surrounding data warehouses,
+			- which include accessing, integration, consolidation, and transformation of multiple heterogeneous databases, ODBC/OLEDB connections, Web accessing and service facilities, and reporting and OLAP analysis tools.
+		3) OLAP-based exploration of multidimensional data
+			- effective data mining needs exploratory data analysis. A user will often want to traverse through a database, select portions of relevant data, analyze them at different granularities, and present knowl- edge/results in different forms. 
+			- Multidimensional data mining provides facilities for mining on different subsets of data and at varying levels of abstraction—by drilling, pivoting, filtering, dicing, and slicing on a data cube and/or intermediate data min- ing results.
+			- This, together with data/knowledge visualization tools, greatly enhances the power and flexibility of data mining.
+		4) Online selection of data mining functions
+			- Users may not always know the specific kinds of knowledge they want to mine. By integrating OLAP with various data min- ing functions, multidimensional data mining provides users with the flexibility to select desired data mining functions and swap data mining tasks dynamically.
+	- The capability of OLAP to provide multiple and dynamic views of summarized data in a data warehouse sets a solid foundation for successful data mining.
+	- Moreover, we also believe that data mining should be a human-centered process. Rather than asking a data mining system to generate patterns and knowledge automati- cally, a user will often need to interact with the system to perform exploratory data analysis.
+	-  OLAP sets a good example for interactive data analysis and provides the nec- essary preparations for exploratory data mining.
+	- Consider the discovery of association patterns, for example. Instead of mining associations at a primitive (i.e., low) data level among transactions, users should be allowed to specify roll-up operations along any dimension.
+- Data warehouse implementation
+	- 
+
+
+
+https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-0002-introduction-to-computational-thinking-and-data-science-fall-2016/lecture-slides-and-files/index.htm
+https://dev.to/chriss/supervised-vs-unsupervised-learning-4nck
+https://dev.to/afozbek/supervised-learning-vs-unsupervised-learning-4b65
+https://medium.com/@dpancea/machine-learning-supervised-vs-unsupervised-learning-f4386a41c1a6

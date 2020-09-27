@@ -1,0 +1,26 @@
+
+1. Run ggplot(data = mpg). What do you see?
+    - ggplot(data=mpg)
+    -  see this image 1.1-exercise-answer.png
+	- This code creates an empty plot. The ggplot() function creates the background of the plot, but since no layers were specified with geom function, nothing is drawn.
+2. How many rows are in mtcars? How many columns?
+	- There are 234 rows and 11 columns in the mpg data frame.
+	- nrow(mtcars)
+		[1] 32
+	- ncol(mtcars)
+		[1] 11
+	- see this image 1.2-exercise-answer.png
+	- glimpse(mpg)
+3. What does the drv variable describe? Read the help for ?mpg to find out.
+	- The drv variable is a categorical variable which categorizes cars into front-wheels, rear-wheels, or four-wheel drive.
+	- the type of drive train, where f = front-wheel drive, r = rear wheel drive, 4 = 4wd
+	- ?mpg
+4. Make a scatterplot of hwy versus cyl.
+	- ggplot(data = mpg) + geom_point(mapping = aes(x = cyl, y =hwy))
+	- see image 1.4-exercise-answer.png
+5. What happens if you make a scatterplot of class versus drv? Why is the plot not useful?
+	- ggplot(data = mpg) + geom_point(mapping = aes(x=class, y=drv))
+	- see image 1.5.1-exercise-answer.png
+	- A scatter plot is not a useful display of these variables since both drv and class are categorical variables. Since categorical variables typically take a small number of values, there are a limited number of unique combinations of (x, y) values that can be displayed. In this data, drv takes 3 values and class takes 7 values, meaning that there are only 21 values that could be plotted on a scatterplot of drv vs. class. In this data, there 12 values of (drv, class) are observed. 
+	- A simple scatter plot does not show how many observations there are for each (x, y) value. As such, scatterplots work best for plotting a continuous x and a continuous y variable, and when all (x, y) values are unique
+	- see image 1.5.2-exercise-answer.png

@@ -1,0 +1,62 @@
+Attribute Classification
+Important of attribute classes
+	- Categorical Attributes (Descrite attributes) 
+		- means finite state of values typically, any data attribute which is categorical in nature represents discrete values which belong to a specific finite set of categories or classes. 
+		- An attribute where the values correspond to discrete categories. For example, state is a categorical attribute with discrete values (CA, NY, MA, etc.). 
+        - Categorical attributes are either non-ordered (nominal) like state, gender, etc., or ordered (ordinal) such as high, medium, or low temperatures.
+		- Feature engineering on categorical data
+		- Bar plot and pie chart is used to visualize categorical data.
+		- Types of categorical attributes:
+			1) Nominal - A nominal scale describes a variable with categories that do not have a natural order or ranking. 
+                    with numbers if you want, but the order is arbitrary and any calculations, such as computing a mean, median, or standard deviation, would be meaningless.
+				- nominal is qualitative data
+                - providing name
+                - A nominal scale describes a variable with categories that do not have a natural order or ranking
+                - Examples
+					ID numbers, eye color, zip codes, movie, music, video games genres, country names, weather, geno type, blood type
+			2) Ordinal - ordered,An ordinal scale is one where the order matters but not the difference between values 
+                - An ordinal scale is one where the order matters but not the difference between values.
+                - ordinal is qualitative data
+				- Examples
+					Rankings, place in competition, grades, clothing sizes(XL, L, M, S XS), shoe sizes, education level, employment roles, socio economic status (“low income”,”middle income”,”high income”), satisfaction rating (“extremely dislike”, “dislike”, “neutral”, “like”, “extremely like”).
+			3) Interval - is a constant value with different values 
+                - An interval scale is one where there is order and the difference between two values is meaningful.
+                - interval is quantitative data
+                - not zero 
+				- Examples
+					temperatures in Celius or Fahrenheit
+			4) Ratio - A ratio variable, has all the properties of an interval variable, and also has a clear definition of 0.0. When the variable equals 0.0, there is none of that variable.
+				     - When working with ratio variables , the ratio of two measurements has a meaningful interpretation
+                     - ratio is quantitative data
+                     - can be zero
+				- Examples
+					Temperature in kelvin, length, time, counts, enzyme activity, dose amount, reaction rate, flow rate, concentration, pulse, weight, length, temperature in Kelvin (0.0 Kelvin really does mean “no heat”), survival time.
+					 For example, because weight is a ratio variable, a weight of 4 grams is twice as heavy as a weight of 2 grams. 
+		- In the 1940s, Stanley Smith Stevens introduced four scales of measurement: nominal, ordinal, interval, and ratio. 
+        - These are still widely used today as a way to describe the characteristics of a variable. 
+        - Knowing the scale of measurement for a variable is an important aspect in choosing the right statistical analysis.
+
+        - Does measurement scale matter for data analysis? 
+            - Knowing the measurement scale for your variables can help prevent mistakes like taking the average of a group of zip (postal) codes, 
+             or taking the ratio of two pH values. 
+             Beyond that, knowing the measurement scale for your variables doesn’t really help you plan your analyses or interpret the results.
+        - Test understanding
+            Favorite candy bar = Nominal, not order
+            Weight of luggage  = Ratio, luggage weight can be 0.
+            Year of your birth = Interval, its constant
+            Egg size (small, medium, large, extra large, jumbo) = Ordinal, its ordered
+            Military rank = Ordinal, its ordered
+            Number of children in a family = Ratio, can be zero meaning no children.
+            Jersey numbers for a football team = Nominal, no order
+            Shoe size = Interval, constant
+        -  Quantitative (Numerical) vs Qualitative (Categorical)
+            - There are other ways of classifying variables that are common in statistics. One is qualitative vs. quantitative
+            - Qualitative variables are descriptive/categorical. Many statistics, such as mean and standard deviation, do not make sense to compute with qualitative variables.
+            - Quantitative variables have numeric meaning, so statistics like means and standard deviations make sense. 
+            - This type of classification can be important to know in order to choose the correct type of statistical analysis. 
+
+
+
+https://towardsdatascience.com/understanding-feature-engineering-part-2-categorical-data-f54324193e63#:~:text=Typically%2C%20any%20data%20attribute%20which,popularly%20known%20as%20response%20variables
+https://docs.oracle.com/cd/B10501_01/datamine.920/a95961/glossary.htm#:~:text=categorical%20attribute,%2C%20medium%2C%20or%20low%20temperatures.
+https://www.graphpad.com/support/faq/what-is-the-difference-between-ordinal-interval-and-ratio-variables-why-should-i-care/

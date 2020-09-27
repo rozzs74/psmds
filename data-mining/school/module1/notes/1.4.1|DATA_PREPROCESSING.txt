@@ -1,0 +1,102 @@
+In the previous session, you have learned how to craft a data mining problem statement.  In this session, you will learn how to preprocess data.
+At the end of the session, you should be able to:
+
+	Describe the various preprocessing methods.
+	Apply a data preprocessing method that is appropriate for a given data.
+
+Real-world data are susceptible to noise and inconsistencies, incomplete and have missing components.  
+So how can data be preprocessed to help improve the quality of data mining results? How can the data be preprocessed to enhance the efficiency and ease of the mining process?
+
+Several techniques can be applied to perform data preprocessing.  Some of these techniques are as follows:
+	Data cleaning can be applied to remove noise and correct inconsistencies in data. 
+	Data integration merges data from multiple sources into coherent data storage such as data warehouse.
+	Data reduction can reduce the size by, for instance, aggregating, eliminating redundant features, or scaled to fall within a smaller range.  
+
+These techniques can improve the accuracy and efficiency of mining algorithms.  The methods are not mutually exclusive; they can work together. 
+
+Why Preprocess Data?
+Data has quality if it satisfies the requirements of the intended use. The following are the factors comprising data quality.
+	accuracy
+	completeness
+	consistency
+	timeliness
+	believability
+	interpretability
+
+Among these factors, the most common that can compromise data quality in large data sets are accuracy, completeness, and consistency. 
+
+There are many possible reasons for inaccurate data.  Some of these are incorrect attribute values, faulty data collection tools, human or computer errors at data entry, users may purposely submit incorrect personal information,  
+and technology limitations. These reasons result in data inconsistencies
+
+Incomplete data can occur for several reasons such as unavailability of data attributes of interest, malfunctioning equipment, some data may not be recorded because they are not considered necessary at the time of entry.  
+	e.g., Occupation=“ ” (missing data)
+
+Data that were inconsistent with other recorded data may have been deleted. Recoding of the data history or modifications may have been overlooked.  
+	Age=“42”, Birthday=“03/07/2010”
+
+	Was rating “1, 2, 3”, now rating “A, B, C”
+
+	discrepancy between duplicate records
+
+Major Tasks of Data Preprocessing
+	Data Cleaning - tasks involve filling in missing values, smoothing noisy data, identifying and removing outliers, and resolving inconsistencies.   Dirty data can confuse the mining procedure, resulting in unreliable output.
+	Data Integration - involves combining data residing in different sources and providing users with a unified view of them.
+	Data Reduction - obtains a reduced representation of the data set that is much smaller in volume yet produces that same analytical result.  Data reduction strategies include dimensionality reduction and numerosity reduction.
+		In dimensionality reduction, data encoding schemes are applied to obtain a reduced or compressed representation of the original data.  Examples include data compression techniques (e.g. wavelet transforms and principal component analysis), and attribute subset selection (e.g. removing irrelevant attributes), and attribute construction (e.g. small set of more useful attributes is derived from the original set).  
+		In numerosity reduction, the data are replaced by alternative, smaller representations using parametric models(e.g. regression) or non-parametric models(e.g. histograms, clusters, sampling, or data aggregation). 
+	Data Transformation - include normalization, discretization, and concept hierarchy generation.  Normalization is the scaling of data to a smaller range (e.g. 0.0, 1.0).  Concept hierarchy is done by replacing low-level concepts (e.g. numeric values such as attribute age) to a higher level (e.g. young, middle-aged, senior).  
+		Discretization is transforming a continuous attribute to a categorical attribute.
+
+Task 1. Data Cleaning
+	Real-world data tend to be dirty, thereby helping to improve the accuracy and efficiency of the subsequent mining process. 
+	Data preprocessing is an essential step in the knowledge discovery process because quality decisions must be base on quality data.  
+	Detecting and rectifying them early, and reducing the data to be analyzed can lead to enormous payoffs for decision making.
+
+Missing Values
+	The following are the methods used for cleaning data.
+		1) Ignore the tuple
+		2) Fill in the missing value manually
+		3) Use a global constant to fill in the missing value (e.g. replace all missing attribute values by the same constant such as label like "Unknown").
+		4) Use a measure of central tendency for the attribute(e.g. mean or median) to fill in the missing value.  Use mean for normal symmetric data distribution and median for skewed data distribution.
+		5) Use the attribute mean or median for all samples belonging to the same class as the given tuple.
+		6) Use the most probable value to fill in the missing value.  This may be determined with regression or decision tree induction. 
+
+Noise is a random error or variance in a measured variable.  Use statistical description techniques (e.g. boxplots (Links to an external site.), and scatter plots (Links to an external site.)), and data visualization to identify outliers which may represent noise.  
+
+The following data smoothing techniques can be used to remove noise.
+	Binning. Binning methods smooth a sorted data value by consulting its neighbourhood that is the values around it. The sorted values are distributed into several buckets or bins.  
+
+	e.g., Salary=“−10” (an error)
+	Given a numeric attribute such as price, how can you smooth out the data to remove the noise?
+
+Task 2. Data Integration
+	Data mining requires often requires data integration, the merging of data from multiple data stores.  
+	Careful integration can help avoid redundancies and inconsistencies in the resulting data set.  
+	This can help improve the accuracy and speed of the subsequent data mining process.
+	The semantic heterogeneity and structure of data pose significant challenges in data integration.   
+	The following methods can be used for data integration.
+		1) Entity Identification Problem
+			- is the matching up of objects in schema integration. Object identification happens when the same attribute or object may have different names in different databases.  Derivable data occurs when one attribute may be a “derived” attribute in another table.
+				Example: 
+				cust_id in one database is cust_number in another database
+				Donald Trump = Trump Donald
+		2) Redundancy and Correlation Analysis
+			- An attribute may be redundant if it can be derived from another attribute or set of attributes.  Inconsistencies in attribute or dimension naming can also cause redundancies in the resulting data set. 
+			- Χ2 (chi-square) test is used to analyze the correlation nominal data.  The formula is 
+			- The larger the Χ2 value, the more likely the variables are related.
+			- The cells that contribute the most to the Χ2 value are those whose actual count is very different from the expected count.  Correlation does not imply causality. (Links to an external site.)  Causation indicates a relation between two variables in which one variable is affected by another. For example, there have been numerous studies that provide evidence that smoking causes lung cancer.  
+		3) Tuple Duplication
+			- 
+		4) Data Value Conflict Detection and Resolution
+
+
+https://www.mathsisfun.com/data/quartiles.html
+https://www.mathsisfun.com/data/scatter-xy-plots.html
+https://www.calculatorsoup.com/calculators/statistics/mean-median-mode.php
+https://www.geeksforgeeks.org/python-binning-method-for-data-smoothing/#:~:text=Binning%20method%20is%20used%20to,values%2C%20they%20perform%20local%20smoothing
+http://learntech.uwe.ac.uk/da/Default.aspx?pageid=1440#:~:text=The%20c2%20test%20is,2%20variables%20in%20the%20population
+
+https://www.kaggle.com/ajay1216/practical-guide-on-data-preprocessing-in-python
+https://medium.com/easyread/basics-of-data-preprocessing-71c314bc7188#:~:text=Data%20Transformation,-Constructing%20data%20cube&text=Data%20Transformation%20involves%20the%20following,binning%2C%20clustering%2C%20and%20regression.
+https://www.statmethods.net/graphs/bar.html
+https://campus.datacamp.com/courses/data-visualization-in-r/a-quick-introduction-to-base-r-graphics?ex=1

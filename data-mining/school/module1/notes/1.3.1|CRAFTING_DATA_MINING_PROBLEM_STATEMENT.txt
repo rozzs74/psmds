@@ -1,0 +1,69 @@
+At the end of the session, you should be able:
+	- Craft a data mining problem statement based on a pipeline that you have created in the previous session;
+	- Make distinctions of descriptive and inferential analysis; and
+	- Synthesize the steps in solving a data mining problem.
+
+Steps in Solving a Data Mining Problem
+	- Data mining begins with the question:  "How can we solve a problem using data?" 
+		1) Practical motivation and sample collection
+			-  answer the ff questions
+				a) Is the problem related to data?
+				b) If yes, can you solve this problem using data in practice?
+			Please write it down and use it as a guide in answering the next step of solving a problem using data.
+			- After crafting a problem that can be solved using data, you need to think about how to collect the relevant data. 
+				It's always good to review a lesson in statistics about getting a sample of a population.
+				In collecting data, you must answer the following questions.
+				a) Does the data you are trying to collect match the problem?
+				b) Does the data represent reality?
+
+		2) Problem formulation and data preparation
+			- Which of the following questions describes a data mining problem?
+				a) Can age, blood type, location, and travel history predict if someone would most likely be infected with COVID 19?
+				b) How do I know whether someone has infected with COVID 19?
+			- With the data mining problem that you have formulated in the previous step, you can now prepare your data for analysis. 
+			Which of the following is the best kind of data? 
+				a) Data from different sources
+				b) Data in a grid format
+				c) Noisy data
+		3) Statistical description and exploratory analysis
+			- How can we clearly express the data with some representations? What statistical insights are relevant? 
+				What kind of algorithm do you need to apply to find connections between data points? How to effectively aggregate the data?
+			- In this stage, exploratory analysis is essential to have initial insights that we can get from the data.  
+				During exploratory analysis, some statistical properties of the dataset(mean, median, variance, distribution) are studied. 
+		4) Pattern recognition and analytical visualization
+			-Exploratory analysis is commonly referred to as descriptive analytics.  In this type of analytics, statistical characteristics of data are presented in the form of visualization.  
+				This is the presentation of information using spatial or graphical representations for
+				a) comparison facilitation
+				b) pattern recognition and 
+				c) initial decision making
+			- Types of Visualization
+				a) Explore or Calculate = this type of visualization requires a further analysis which requires a reason about a conveyed information.
+				b) Commnunicate = this type explains the information and suggests a hint for decision making.
+            - Visualization can also be classified according to purposes, such as comparison, composition, distribution, and relationship.  Figure 1.3 3 presents the different graphical presentations according to these classifications.  The following questions can serve as a guide in determining which among the types is best suited for specific data.
+                How many variables do you want to show in a single chart?
+                How many data points will you display for each variable?
+                Will you display values over a while, or among items or groups?
+		5) Machine learning and algorithmic optimization
+			- In the previous steps, data was used for statistics and data visualization.  
+				This step emphasizes machine learning and algorithmic optimization.
+				The tasks in steps 1 to 5 can be broadly categorized as descriptive and inferential analytics.
+			- The goal of descriptive analytics is to describe the population or dataset under study.  
+				The description can be used to generalized to any other group or population.
+			- The inferential analytics is produced through complex mathematical calculations. The findings can be taken from the sample group and be generalized to a larger population.
+		6) Statistical inference an information presentation.
+			- It is also important to understand that learning algorithms are not perfect.  So, how to confidently infer from statistical results?
+			- Statistical inference can become certain in two ways:
+				a) Generalize the learning procedure or model
+				b) Estimate the confidence of prediction by the genera model
+		7) Intelligence decision and ethical consideration
+			- Data science is a team sport. Most of the time, it is essential to make decisions on real-life problems with the assistance of a domain expert. 
+			- It is also essential to keep in mind to safeguard data that needs utmost confidentiality.  
+				Hence, in analyzing data, it is necessary to consider the legality and privacy of individuals or organizations.
+
+
+
+
+https://www.tatvic.com/blog/7-visualizations-learn-r
+https://www.scribbr.com/methodology/sampling-methods/
+https://towardsdatascience.com/exploratory-data-analysis-8fc1cb20fd15  
+https://sciencestruck.com/descriptive-vs-inferential-statistics 

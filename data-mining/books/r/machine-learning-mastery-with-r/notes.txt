@@ -1,0 +1,10 @@
+
+references: 
+
+http://blog.sellorm.com/2016/11/26/talk-r-is-production-safe/
+https://putrinprod.com/#
+
+
+The syntax in R looks confusing, but only to begin with. It is a LISP-style language inspired by an even older language (S). The assignment syntax is probably the strangest thing you will see. Assignment uses the arrow (<-) rather than a single equals (=). Also, like many programming languages, R syntax is case sensitive.
+
+

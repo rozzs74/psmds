@@ -1,0 +1,160 @@
+DataOB Warehouse
+	- generalize and consolidate data in multidimensional space.
+	- construction of data warehouse needed to implement data preprocessing (cleaning, integration, selection, transformation).
+	- provides OLAP (online analytical processing) tool for interactive analysis of multidimensional data of varied granularities.
+	- facilitates effective data gene- ralization and data mining
+	- data mining functionalities can integrated to OLAP to enhance interactive mining of knowledge at multiple levels of abstraction.
+	- important platform for data analysis, OLAP will be an important platform 
+	-There OLAP and data mining form an essential step in the knowledge discovery process.
+	- The data model for data warehouse is data cube, a multidimensional data.
+
+Basic concepts
+	- Three data warehouse models
+		1) Enterprise model
+		2) Data mart
+		3) Virtual warehouse
+	- Backend technology in data warehouse is ETL (extract, transform, load	)
+
+What is Data Warehouse?
+	- provides architectures and tools for business executives to system- atically organize, understand, and use their data to make strategic decisions
+	- are valuable tools in todayœôòùs competitive, fast-evolving world.
+	- is a weapon to retian customers by learning more about their needs
+	- refers to a data repository that is maintained separately from an organiza- tionœôòùs operational databases. 
+	- allow for integration of a variety of application systems. 
+	- They support information processing by providing a solid platform of consolidated historic data for analysis.
+	- According to William H. Inmon, a leading architect in construction of data warehouse system
+	- is a subject-oriented, integrated, time-variant, and nonvolatile collection of data in support of managementœôòùs decision making process.
+		- Why subject-oriented?
+			- Hence, data warehouses typically provide a simple and concise view of particular subject issues by excluding data that are not useful in the decision support process.
+		- Why integrated?
+			- constructed by multiple heterogeneous source such as relational database, flat files and online transaction data.
+			- In this process, data cleaning and data techniques are applied
+		- Why time-variant?
+			-  Data are stored to provide information from an historic perspective (e.g., the past 5œôòó10 years). 
+			- Every key structure in the data warehouse contains, either implicitly or explicitly, a time element.
+		- Why nonvolatile?
+			- A data warehouse is always a physically separate store of data trans- formed from the application data found in the operational environment
+			- Due to this separation, a data warehouse does not require transaction processing, recovery, and concurrency control mechanisms. 
+			- It usually requires only two operations in data accessing: initial loading of data and access of data
+	-In sum, a data warehouse is a semantically consistent data store that serves as a physical implementation of a decision support data model. It stores the information an enterprise needs to make strategic decisions. 
+		A data warehouse is also often viewed as an architecture, constructed by integrating data from multiple heterogeneous sources to support structured and/or ad hoc queries, analytical reporting, and decision making
+	- The utilization of a data warehouse often necessitates a collection of decision support technologies. This allows œôòüknowledge workersœôòý (e.g., managers, analysts, and executives) to use the warehouse to quickly and conveniently obtain an overview of the data, and to make sound decisions based on information in the warehouse. 
+	- How are organizations using the information from data warehouses?
+		- Many organizations use this information to support business decision-making activities, including
+			1) increasing customer focus, which includes the analysis of customer buying patterns (such as buying preference, buying time, budget cycles, and appetites for spending);
+			2) epositioning products and managing product portfolios by compar- ing the performance of sales by quarter, by year, and by geographic regions in order to fine-tune production strategies;
+			3) analyzing operations and looking for sources of profit; and
+			4) managing customer relationships, making environmental corrections, and managing the cost of corporate assets.
+	- However, a data warehouse brings high performance to the integrated heterogeneous database system because data are copied, preprocessed, integrated, anno- tated, summarized, and restructured into one semantic data store.
+- Differences between Operational Database Systems and Data Warehouses
+	- OLTP performs online transaction and query processing while OLAP, 
+	  Data warehouse systems, on the other hand, serve users or knowledge workers in the role of data analysis and decision making. Such systems can organize and present data in various formats in order to accommodate the diverse needs of different users. These systems are known as online analytical processing (OLAP) systems.
+
+	- User and system orientation
+		An OLTP system is customer-oriented and is used for transaction and query processing by clerks, clients, and information technology professionals. 
+		An OLAP system is market-oriented and is used for data analysis by knowledge workers, including managers, executives, and analysts.
+	- Data content 
+		- An OLTP system manages current data that, typically, are too detailed to be easily used for decision making.
+		- An OLAP system manages large amounts of historic data, provides facilities for summarization and aggregation, and stores and manages information at different levels of granularity. These features make the data easier to use for informed decision making.
+	- Database design 
+		- An OLTP uses entity-relationhip (ER) These features make the data easier to use for informed decision making.
+		- An OLAP system typically adopts either a star or a snowflake model d a subject-oriented database design.	
+	- View 
+		- An OLTP system focuses mainly on the current data within an enterprise or department, without referring to historic data or data in different organizations
+		- An OLAP system often spans multiple versions of a database schema, due to the evolutionary process of an organization. Because of their huge volume, OLAP data are stored on multiple storage media.
+	- Access patterns
+		- The access patterns of an OLTP system consist mainly of short, atomic transactions. Such a system requires concurrency control and recovery mech- anisms.
+		- However, accesses to OLAP systems are mostly read-only operations (because most data warehouses store historic rather than up-to-date information), although many could be complex queries.
+
+- But, Why Have a Separate Data Warehouse?
+	- A major reason for such a separation is to help promote the high performance of both systems.
+	- An operational database is designed and tuned from known tasks and workloads like indexing and hashing using primary keys, searching for particular records, and optimizing œôòücannedœôòý queries.
+	- On the other hand, data warehouse queries are often complex
+	- They involve the computation of large data groups at summarized levels, and may require the use of spe- cial data organization, access, and implementation methods based on multidimensional views.
+	- Processing OLAP queries in operational databases would substantially degrade the performance of operational tasks.
+	- An OLAP query often needs read-only access of data records for summarization and aggregation.
+	- In contrast, operational databases contain only detailed raw data, such as transactions, which need to be consolidated before analy- sis.
+	- Because the two systems provide quite different functionalities and require different kinds of data, it is presently necessary to maintain separate databases.
+	- However, many vendors of operational relational database management systems are beginning to opti- mize such systems to support OLAP queries.
+	- As this trend continues, the separation between OLTP and OLAP systems is expected to decrease.
+- Data Warehousing: A Multitiered Architecture
+	- Adopted three-tier architecture
+		1) Top tier or Frontend tools are the output
+			- Consists of 
+				- Query / Report 
+				- Analysis
+				- Data mining 
+			-  is a front-end client layer,  which contains query and reporting tools, analysis tools, and/or data mining tools 
+		2) Middle tier  (OLAP server) (multidimensional)
+			- Consists of
+				- OLAP server 
+				- that is typically implemented using either (1) a relational OLAP (ROLAP) model (i.e., an extended relational DBMS that maps oper- ations on multidimensional data to standard relational operations)
+				- a multi- dimensional OLAP (MOLAP) model (i.e., a special-purpose server that directly implements multidimensional data and operations)
+		3) Bottom tier (Data warehouse server)
+			- Consists of
+				- Monitoring
+				- Administration
+				- Data warehouse 
+				- Data Marts 
+			- The bottom tier is a warehouse database server that i	s almost always a relational database system.
+			- Back-end tools and utilities are used to feed data into the bot- tom tier from operational databases or other external sources.
+			- In this tier, data extraction, cleaning and transformation happening, to merge similar data from different sources into a unified format
+		4) Data (input)
+			- External sources 
+			- Operational Databases
+- Data Warehouse Models: Enterprise Warehouse, Data Mart, and Virtual Warehouse
+	- From the architecture point of view, there are three data warehouse models: the enterprise warehouse, the data mart, and the virtual warehouse.
+	- Enterprise warehouse 
+		- An enterprise warehouse collects all of the information about subjects spanning the entire organization.
+		- It provides corporate-wide data inte- gration, usually from one or more operational systems or external information providers, and is cross-functional in scope.
+		- It typically contains detailed data as well as summarized data, and can range in size from a few gigabytes to hundreds of gigabytes, terabytes, or beyond. 
+		- An enterprise data warehouse may be imple- mented on traditional mainframes, computer superservers, or parallel architecture platforms. It requires extensive business modeling and may take years to design and build.
+	- Data mart 
+		- A data mart contains a subset of corporate-wide data that is of value to a specific group of users. 
+		- The scope is confined to specific selected subjects.
+		- For example, a marketing data mart may confine its subjects to customer, item, and sales. The data contained in data marts tend to be summarized.
+		- Data marts are usually implemented on low-cost departmental servers that are Unix/Linux or Windows based.
+		- The implementation cycle of a data mart is more likely to be measured in weeks rather than months or years.
+		- However, it may involve complex integration in the long run if its design and planning were not enterprise-wide.
+		- Depending on the source of data, data marts can be categorized as independent or dependent
+			- independent data mart 
+				Independent data marts are sourced from data captured from one or more operational systems or external information providers, or from data generated locally within a particular department or geographic area.
+			- dependent data mart 
+				 data marts are sourced directly from enterprise data warehouses.
+		- Virtual warehouse
+			- A virtual warehouse is a set of views over operational databases.
+			- For efficient query processing, only some of the possible summary views may be materialized. 
+				A virtual warehouse is easy to build but requires excess capacity on operational database servers.
+	- œôòüWhat are the pros and cons of the top-down and bottom-up approaches to data ware- house development?
+		1) The top-down development of an enterprise warehouse serves as a systematic solution and minimizes integration problems
+		2) However, it is expensive, takes a long time to develop, and lacks flexibility due to the difficulty in achieving consistency and consensus for a common data model for the entire organization.
+		3) The bottom- up approach to the design, development, and deployment of independent data marts provides flexibility, low cost, and rapid return of investment
+			It, however, can lead to problems when integrating various disparate data marts into a consistent enterprise data warehouse.
+	- A recommended approach for data warehouse development.
+		1) First, a high-level corporate data model is defined within a reasonably short period (such as one or two months), that provides a corporate-wide, consistent, integrated view of data among different subjects and potential usages. 
+		2)  Second, independent data marts can be implemented in parallel with the enterprise Second, independent data marts can be implemented in parallel with the enterprise
+		3) Third, distributed data marts can be constructed to integrate different data marts via hub servers
+		4) Finally, a multitier data warehouse is constructed where the enterprise warehouse is the sole custodian of all warehouse data, which is then distributed to the various dependent data marts.
+- ETL (Extraction, transformation, loading)
+	- Data warehouse systems use back-end tools and utilities to populate and refresh their data. These tools and utilities include the ff:
+		1) Data extraction, which tupically gathers data from multiple, heterogeneous, and external sources.
+		2) Data cleaning, which detects errors in the data and rectifies them when possible. 
+		3) Data transformation, which converts data from legacy or host format to warehouseformat.
+		4) Load, which sorts, summarizes, consolidates, computes views, checks integrity, and builds indices and partitions.
+		5) Refresh, which propagates the updates from the data sources to the warehouse.
+	- Data cleaning and data transformation are important steps in improving the data quality
+- Metadata repository
+	- Metadata are data about data
+	- When used in a data warehouse, metadata are the data that define warehouse objects.	
+	- Metadata are created for the data names and definitions of the given warehouse.
+	- Additional metadata are created and captured for timestamping any extracted data, the source of the extracted data, and missing fields that have been added by data cleaning or integration processes.
+	- A metadata repository should contain the following:
+		1) Data warehouse structure, which includes the warehouse schema, view, dimensions, hierarchies, and derived data definitions, as well as data mart locations and contents.
+		2) Operational metadata, which include data lineage (history of migrated data and the sequence of transformations applied to it)
+		3) Algorithms used for summarization - which include measure and dimension definition algorithms, data on granularity, partitions, subject areas, aggregation, summarization, and predefined queries and reports
+		4) Mapping from the operational environment to the data warehouse - which includes source databases and their contents, gateway descriptions, data partitions, data extraction, cleaning, transformation rules and defaults, data refresh and purging rules, and security (user authorization and access control).
+		5) Data related to system performance -  which include indices and profiles that improve data access and retrieval performance, in addition to rules for the timing and scheduling of refresh, update, and replication cycles.
+		6) Business metadata - which include business terms and definitions, data ownership information, and charging policies.
+	- Metadata play a very different role than other data warehouse data and are important for many reasons.
+	- For example, metadata are used as a directory to help the decision support system analyst locate the contents of the data warehouse, and as a guide to the data mapping when data are transformed from the operational environment to the data warehouse environment. 
+	- Metadata also serve as a guide to the algorithms used for summarization between the current detailed data and the lightly summarized data, and between the lightly summarized data and the highly summarized data. Metadata should be stored and managed persistently (i.e., on disk).

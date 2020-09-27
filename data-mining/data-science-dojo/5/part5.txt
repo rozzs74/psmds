@@ -1,0 +1,116 @@
+Data Quality
+	- data quality is the precondition for analyzing and using big data
+	- big data has 4vs: Volume(size), Velocity(speed), Variety(types), Value(scale) (Katal, Wazid, & Goudar, 2013)
+	- data that is "'fit for use' in their intended operational, decision-making and other roles" or that exhibits "'conformance to standards' that have been set, so that fitness for use is achieved"
+	- refers to the state of qualitative or quantitative pieces of information. 
+	- very important when it comes to decision is having a data quality. By asking where the 
+		problem is coming from.
+	- most commonly looked by data scientist 
+	- Three fundamental questions in data quality
+		1) What problems should we worry about?
+		2) How can we detect problems with the data?
+		3) What can we do about these problems?
+	- Examples of data quality problems (that shows up in production all the time):
+		- Noise and outliers
+		- Missing values 
+		- Duplicate data
+	- By rapidly acquiring and analyzing big data from various sources and with various uses, 
+		researchers and decision-makers have gradually realized that this massive amount of information has benefits for under- standing customer needs, 
+		improving service quality, and predicting and preventing risks. 
+		However, the use and analysis of big data must be based on accurate and high-quality data,
+		which is a necessary condition for generating value from big data. 
+		Therefore, we analyzed the challenges faced by big data and proposed a quality assessment framework and assessment process for it.
+	- Challenges in data quality under big or small data scope
+		1)  The diversity of data sources brings abundant data types and complex data structures and increases the difficulty of data integration.
+			- The more data sources, unstructured data, complexity it makes difficult to generate data quality.
+			- There are conflicts and inconsistent or contradictory phenomena among data from different sources.
+			- unstructured data for example, documents, video, audio, etc.
+			- semi-structured data, including: software packages/modules, spreadsheets, and financial reports
+			- structured data. The quantity of unstructured data occupies more than 80% of the total amount of data in existence.
+		2) Data volume is tremendous, and it is difficult to judge data quality within a reasonable amount of time.
+			- It is difficult to collect, clean, integrate, and finally obtain the necessary high-quality data within a reasonable time frame.
+			- Because the proportion of unstructured data in big data is very high, it will take a lot of time to transform unstructured types into structured types and further pro- cess the data.  
+			- This is a great challenge to the existing techniques of data processing quality.
+		3) Data change very fast and the “timeliness” of data is very short, which necessitates higher requirements for processing technology.
+			- Due to the rapid changes in big data, the “timeliness” of some data is very short
+			- Efficiency and speed is really important to obtain data quality because If companies can’t collect the required data in real time or deal with the data needs over a very long time, then they may obtain outdated and invalid information.
+			- Processing and analysis based on these data will produce useless or misleading conclusions, eventually leading to decision-making mistakes
+		4) No unified and approved data quality standards have been formed
+			- In order to guarantee the product quality and improve benefits to enterprises, need to have standards.
+	- Data quality depends not only on its own features but also on the business environment using the data, 
+		including business processes and business users.
+	- Only the data that conform to the relevant uses and meet requirements can be consid- ered qualified (or good quality) data. 
+	- Usually, data quality standards are developed from the perspective of data producers.
+	- Data quality framework
+		1) Data Quality Dimensions
+			- Availability
+			- Usability
+			- Reliability
+			- Relevance
+			- Presentation Quality
+		2) Data Quality Elements
+			- Under Availability
+				- Accessibility
+				- Timeliness
+				- Authorization
+			- Under Usability
+				- Definition of documentation
+				- Credibility
+				- MetaData
+			- Under Reliability
+				- Accuracy
+				- Integrity
+				- Consistency
+				- Completeness
+				- Auditability
+			- Under Relevance
+				- Fitness
+			- Under Presentation Quality
+				- Readability
+				- Structure
+		3) Indicators
+Noise
+	- An invalid signal overlapping valid data
+	- Data has inaccurate values
+	- Examples
+		1) Distortion of a person's voice over the phone.
+		2) Snow on a television screen
+		3) Human inconsistency in labeling, example is in sport judging the performance
+	- invalid data pointes that obscuring the signals
+	- determing the attributes which are noisy
+
+Outliers
+	- Data objects with characteristics that are considerably different than most 
+		of the other data objects in data sets.
+	- is data point that differs significantly from other observations.
+	- the data is valid values and properly collected and clean but "ITS outside of the normal range"
+
+Missing Values 
+	- Reasons for missing values 
+		1) Information is not collected 
+			- (e.g., people decline to give their age and weight)
+		2) Attributes may not applicable to all cases
+			- (e.g., annual income is not applicable to children)
+	- Handling missing values 
+		1) Eliminate Data Objects
+		2) Estimate Missing Values
+		3) Ignore the missing values during analysis
+		4) Replcate with all possible values (weighted by their probabilities)
+Duplicate Data 
+	- Data set may include data objects that are duplicates, or almost duplicates
+		of one another 
+	- Major issue when merging data from heterogeneous sources
+	- Example
+		Same person with multiple email addresses
+
+
+
+References:
+https://en.wikipedia.org/wiki/Data_quality
+https://datascience.codata.org/articles/10.5334/dsj-2015-002/
+
+TiP763
+whEa7X
+
+https://towardsdatascience.com/understanding-k-means-clustering-in-machine-learning-6a6e67336aa1
+https://towardsdatascience.com/k-means-clustering-algorithm-applications-evaluation-methods-and-drawbacks-aa03e644b48a

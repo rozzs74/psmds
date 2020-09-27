@@ -1,0 +1,71 @@
+Series Name,Series Code,Country Name,Country Code,2009 [YR2009],2010 [YR2010],2011 [YR2011],2012 [YR2012],2013 [YR2013],2014 [YR2014],2015 [YR2015],2016 [YR2016],2017 [YR2017],2018 [YR2018],2006  [YR2006],2007  [YR2007],2008  [YR2008]
+"Population, total",SP.POP.TOTL,Indonesia,IDN,238620563,241834215,245116206,248452413,251806402,255129004,258383256,261554226,264645886,267663435,267663435,267663435,267663435
+"Population, total",SP.POP.TOTL,Japan,JPN,128047000,128070000,127833000,127629000,127445000,127276000,127141000,126994511,126785797,126529100,267663435,267663435,267663435
+"Population, total",SP.POP.TOTL,"Korea, Rep.",KOR,49307835,49554112,49936638,50199853,50428893,50746659,51014947,51245707,51466201,51635256,51635256,51835256,51235256
+"Population, total",SP.POP.TOTL,Malaysia,MYS,27735040,28208035,28650955,29068159,29468872,29866559,30270962,30684804,31105028,31528585,267663435,267663435,267663435
+"Population, total",SP.POP.TOTL,Mongolia,MNG,2673796,2719896,2770362,2824699,2881792,2940108,2998439,3056359,3113779,3170208,267663435,267663435,267663435
+"Population, total",SP.POP.TOTL,Philippines,PHL,92414158,93966780,95570047,97212638,98871552,100513138,102113212,103663927,105173264,106651922,267663435,267663435,267663435
+"Population, total",SP.POP.TOTL,Thailand,THA,66866839,67195028,67518382,67835957,68144501,68438730,68714511,68971331,69209858,69428524,267663435,267663435,267663435
+"Population, total",SP.POP.TOTL,Vietnam,VNM,87092252,87967651,88871561,89802487,90753472,91714595,92677076,93638724,94596642,95540395,267663435,267663435,267663435
+"Population, total",SP.POP.TOTL,China,CHN,1331260000,1337705000,1344130000,1350695000,1357380000,1364270000,1371220000,1378665000,1386395000,1392730000,267663435,267663435,267663435
+"Population, total",SP.POP.TOTL,India,IND,1217726215,1234281170,1250288729,1265782790,1280846129,1295604184,1310152403,1324509589,1338658835,1352617328,267663435,267663435,267663435
+"Population, total",SP.POP.TOTL,Iraq,IRQ,28973162,29741976,30725300,31890011,33157050,34411951,35572261,36610632,37552781,38433600,267663435,267663435,267663435
+"Population, total",SP.POP.TOTL,Pakistan,PAK,175525609,179424641,183340592,187281475,191262919,195306825,199426964,203627284,207896686,212215030,267663435,267663435,267663435
+"Population, total",SP.POP.TOTL,East Asia & Pacific,EAS,2192059415,2206884624,2221673110,2236819053,2252046977,2267482299,2282855831,2298514046,2314202003,2328220870,267663435,267663435,267663435
+"Annualized growth in per capita real survey mean consumption or income, bottom 40% (%)",SI.SPR.PC40.ZG,Indonesia,IDN,,,,,,,,,,5.06,,,
+"Annualized growth in per capita real survey mean consumption or income, bottom 40% (%)",SI.SPR.PC40.ZG,Japan,JPN,,,,,,,,,,,,,
+"Annualized growth in per capita real survey mean consumption or income, bottom 40% (%)",SI.SPR.PC40.ZG,"Korea, Rep.",KOR,,,,,,,,,,,,,
+"Annualized growth in per capita real survey mean consumption or income, bottom 40% (%)",SI.SPR.PC40.ZG,Malaysia,MYS,,,,,,,,8.3,,,,,
+"Annualized growth in per capita real survey mean consumption or income, bottom 40% (%)",SI.SPR.PC40.ZG,Mongolia,MNG,,,,,,,,,,0.99,,,
+"Annualized growth in per capita real survey mean consumption or income, bottom 40% (%)",SI.SPR.PC40.ZG,Philippines,PHL,,,,,,,5.12,,,,,,
+"Annualized growth in per capita real survey mean consumption or income, bottom 40% (%)",SI.SPR.PC40.ZG,Thailand,THA,,,,,,,,,,1.45,,,
+"Annualized growth in per capita real survey mean consumption or income, bottom 40% (%)",SI.SPR.PC40.ZG,Vietnam,VNM,,,,,,,,,,4.91,,,
+"Annualized growth in per capita real survey mean consumption or income, bottom 40% (%)",SI.SPR.PC40.ZG,China,CHN,,,,,,,,8.38,,,,,
+"Annualized growth in per capita real survey mean consumption or income, bottom 40% (%)",SI.SPR.PC40.ZG,India,IND,,,,,,,,,,,,,
+"Annualized growth in per capita real survey mean consumption or income, bottom 40% (%)",SI.SPR.PC40.ZG,Iraq,IRQ,,,,,,,,,,,,,
+"Annualized growth in per capita real survey mean consumption or income, bottom 40% (%)",SI.SPR.PC40.ZG,Pakistan,PAK,,,,,,,2.72,,,,,,
+"Annualized growth in per capita real survey mean consumption or income, bottom 40% (%)",SI.SPR.PC40.ZG,East Asia & Pacific,EAS,,,,,,,,,,,,,
+"Multidimensional poverty, Drinking water (% of population deprived)",SI.POV.WATR.MI,Indonesia,IDN,,,,,,,,10.7,,,,,
+"Multidimensional poverty, Drinking water (% of population deprived)",SI.POV.WATR.MI,Japan,JPN,,,,,,,,,,,,,
+"Multidimensional poverty, Drinking water (% of population deprived)",SI.POV.WATR.MI,"Korea, Rep.",KOR,,,,,,,,,,,,,
+"Multidimensional poverty, Drinking water (% of population deprived)",SI.POV.WATR.MI,Malaysia,MYS,,,,,,,1.6,,,,,,
+"Multidimensional poverty, Drinking water (% of population deprived)",SI.POV.WATR.MI,Mongolia,MNG,,,,,,,,12.8,,,,,
+"Multidimensional poverty, Drinking water (% of population deprived)",SI.POV.WATR.MI,Philippines,PHL,,,,,,,10.6,,,,,,
+"Multidimensional poverty, Drinking water (% of population deprived)",SI.POV.WATR.MI,Thailand,THA,,,,,,,,,0.9,,,,
+"Multidimensional poverty, Drinking water (% of population deprived)",SI.POV.WATR.MI,Vietnam,VNM,,,,,,7.1,,,,,,,
+"Multidimensional poverty, Drinking water (% of population deprived)",SI.POV.WATR.MI,China,CHN,,,,,,,,,,,,,
+"Multidimensional poverty, Drinking water (% of population deprived)",SI.POV.WATR.MI,India,IND,,,,,,,,,,,,,
+"Multidimensional poverty, Drinking water (% of population deprived)",SI.POV.WATR.MI,Iraq,IRQ,,,,10,,,,,,,,,
+"Multidimensional poverty, Drinking water (% of population deprived)",SI.POV.WATR.MI,Pakistan,PAK,,,,,,,7.7,,,,,,
+"Multidimensional poverty, Drinking water (% of population deprived)",SI.POV.WATR.MI,East Asia & Pacific,EAS,,,,,,,,,,,,,
+"Multidimensional poverty, Electricity (% of population deprived)",SI.POV.ELEC.MI,Indonesia,IDN,,,,,,,,2.4,,,,,
+"Multidimensional poverty, Electricity (% of population deprived)",SI.POV.ELEC.MI,Japan,JPN,,,,,,,,,,,,,
+"Multidimensional poverty, Electricity (% of population deprived)",SI.POV.ELEC.MI,"Korea, Rep.",KOR,,,,,,,,,,,,,
+"Multidimensional poverty, Electricity (% of population deprived)",SI.POV.ELEC.MI,Malaysia,MYS,,,,,,,0.6,,,,,,
+"Multidimensional poverty, Electricity (% of population deprived)",SI.POV.ELEC.MI,Mongolia,MNG,,,,,,,,0.2,,,,,
+"Multidimensional poverty, Electricity (% of population deprived)",SI.POV.ELEC.MI,Philippines,PHL,,,,,,,9.1,,,,,,
+"Multidimensional poverty, Electricity (% of population deprived)",SI.POV.ELEC.MI,Thailand,THA,,,,,,,,,0.1,,,,
+"Multidimensional poverty, Electricity (% of population deprived)",SI.POV.ELEC.MI,Vietnam,VNM,,,,,,0.9,,,,,,,
+"Multidimensional poverty, Electricity (% of population deprived)",SI.POV.ELEC.MI,China,CHN,,,,,,,,,,,,,
+"Multidimensional poverty, Electricity (% of population deprived)",SI.POV.ELEC.MI,India,IND,,,,,,,,,,,,,
+"Multidimensional poverty, Electricity (% of population deprived)",SI.POV.ELEC.MI,Iraq,IRQ,,,,0.7,,,,,,,,,
+"Multidimensional poverty, Electricity (% of population deprived)",SI.POV.ELEC.MI,Pakistan,PAK,,,,,,,10.1,,,,,,
+"Multidimensional poverty, Electricity (% of population deprived)",SI.POV.ELEC.MI,East Asia & Pacific,EAS,,,,,,,,,,,,,
+"Multidimensional poverty, Educational enrollment (% of population deprived)",SI.POV.ENRL.MI,Indonesia,IDN,,,,,,,,1.7,,,,,
+"Multidimensional poverty, Educational enrollment (% of population deprived)",SI.POV.ENRL.MI,Japan,JPN,,,,,,,,,,,,,
+"Multidimensional poverty, Educational enrollment (% of population deprived)",SI.POV.ENRL.MI,"Korea, Rep.",KOR,,,,,,,,,,,,,
+"Multidimensional poverty, Educational enrollment (% of population deprived)",SI.POV.ENRL.MI,Malaysia,MYS,,,,,,,0.6,,,,,,
+"Multidimensional poverty, Educational enrollment (% of population deprived)",SI.POV.ENRL.MI,Mongolia,MNG,,,,,,,,3.2,,,,,
+"Multidimensional poverty, Educational enrollment (% of population deprived)",SI.POV.ENRL.MI,Philippines,PHL,,,,,,,4.4,,,,,,
+"Multidimensional poverty, Educational enrollment (% of population deprived)",SI.POV.ENRL.MI,Thailand,THA,,,,,,,,,0.6,,,,
+"Multidimensional poverty, Educational enrollment (% of population deprived)",SI.POV.ENRL.MI,Vietnam,VNM,,,,,,1.3,,,,,,,
+"Multidimensional poverty, Educational enrollment (% of population deprived)",SI.POV.ENRL.MI,China,CHN,,,,,,,,,,,,,
+"Multidimensional poverty, Educational enrollment (% of population deprived)",SI.POV.ENRL.MI,India,IND,,,,,,,,,,,,,
+"Multidimensional poverty, Educational enrollment (% of population deprived)",SI.POV.ENRL.MI,Iraq,IRQ,,,,22.7,,,,,,,,,
+"Multidimensional poverty, Educational enrollment (% of population deprived)",SI.POV.ENRL.MI,Pakistan,PAK,,,,,,,5.1,,,,,,
+"Multidimensional poverty, Educational enrollment (% of population deprived)",SI.POV.ENRL.MI,East Asia & Pacific,EAS,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,
+Data from database: Poverty and Equity,,,,,,,,,,,,,,,,
+Last Updated: 03/18/2020,,,,,,,,,,,,,,,,
