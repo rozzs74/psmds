@@ -1,0 +1,27 @@
+T: Transactional data base
+Ck: Candidate item set of size k 
+Lk: Frequent item set of size k 
+s: Support
+Apriori(T, s)
+    L1 ← { large 1-item set that appear in more than or equal to s transactions }
+    k←2
+    While Lk-1 ≠ φ
+        Ck ← Join(Lk-1)
+            For each transaction t in T
+                For each candidate c in Ck
+                    If(c c t) then 
+                        count[c]←count[c]+1
+                    End If
+                End For
+            End For
+            Lk = φ
+            For each candidate c in Ck //Prune
+                Lk ←Lk U{c}
+                If (count[c] >= s) then 
+                    Lk ←Lk U{c}
+                End If
+            End For
+            k←k+1
+    End While
+    Return Lk
+End Apriori
