@@ -23,6 +23,42 @@ get_params <- function() {
     return (list(data_sets=PimaIndiansDiabetes))
 }
 
+plot_bw <- function(data, options) {
+    bwplot(data, scales=options)
+    return(TRUE)
+}
+
+plot_density <- function(data, options) {
+    densityplot(data, scales=options, pch="|")
+    return(TRUE)
+}
+
+plot_dots <- function(data, options) {
+    dotplot(data, scales=options)
+}
+
+plot_parallel <- function(data) {
+    parallelplot(data)
+    return(TRUE)
+}
+
+plot_scatter_matrix <- function(data) {
+    splom(data)
+    return(TRUE)
+}
+
+plot_pairwise_xy <- function(data, models) {
+    xyplot(data, models=models)
+    return(TRUE)
+}
+
+
+get_statistical_significance <- function(data) {
+    diffs <- diff(data)
+    summary(diffs)
+    return(TRUE)
+}
+
 params <- get_params()
 CONTROL <- get_train_control("repeatedcv", 10, 3)
 DATA_SETS <- params$data_sets
@@ -47,3 +83,18 @@ rf.model <- train_model("rf", CONTROL, DATA_SETS)
 # collect resamples
 results <- resamples(list(CART=cart.model, LDA=lda.model, SVM=svm.model, KNN=knn.model, RF=rf.model))
 summary(results)
+
+
+scales <- list(x=list(relation="free"), y=list(relation="free"))
+#BW plots
+plot_bw(results, scales)
+plot_density(results, scales)
+
+plot_dots(results, scales)
+plot_parallel(results)
+
+plot_scatter_matrix(results)
+
+plot_pairwise_xy(results, c=("LDA", "SVM"))
+
+get_statistical_significance(results)
