@@ -50,14 +50,14 @@ train_method <- params$train_method
 train_number <- params$train_number
 train_repeats <- params$train_repeats
 knn.train.control <- trainControl(method=train_method, number=train_number, repeats=train_repeats)
+
+set_seed(7)
 train_knn_model <- function(data_sets, controls, method, metric) {
-	knn_model <- train(Class ~., data=data_sets, method=method, metric=metric)
+	knn_model <- train(Class ~., data=data_sets, method=method, metric=metric, trControl=control)
 	return(knn_model)
 }
-
 algorithm <- params$method
 algorithm_metric <- params$model_evaluation_metric
-set_seed(7)
-knn_model <- train(Class ~., data=data_sets, method=algorithm, metric=algorithm_metric, trControl=knn.train.control)
+knn_model <- train_knn_model(data_sets, knn.train.control, algorithm, algorithm_metric)
 knn_model
 summary(knn_model)
