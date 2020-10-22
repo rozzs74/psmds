@@ -1,7 +1,7 @@
 import csv
 import numpy
 
-filename = "./pima-indians-diabetes.csv"
+filename = "../../machine-learning-mastery-with-Python/pima-indians-diabetes.data.csv"
 
 def read(file_name):
 	with open(filename, "r") as content:

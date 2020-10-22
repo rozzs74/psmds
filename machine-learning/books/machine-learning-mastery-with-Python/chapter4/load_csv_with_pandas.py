@@ -1,6 +1,6 @@
 from pandas import read_csv
 
-# path = "./pima-indians-diabetes.data.csv"
+# path = "../../pima-indians-diabetes.data.csv"
 path = "https://raw.githubusercontent.com/jbrownlee/Datasets/master/pima-indians-diabetes.data.csv"
 
 def read(path):
