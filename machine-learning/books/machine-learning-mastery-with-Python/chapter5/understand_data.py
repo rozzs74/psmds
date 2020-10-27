@@ -8,9 +8,12 @@ def main():
 	columns = ["preg", "plas", "pres", "skin", "test", "mass", "pedi", "age", "class"]
 	df = read_csv(path, names=columns)
 	head = get_peek(df, 20)
+	# Data profiling
 	dimension = get_dimension(df)
-	df_data_types = get_data_types(df)
 	df_descriptive_statistics = get_descriptive_statistics(df)
+	df_info = get_data_information(df)
+	df_data_types = get_data_types(df)
+	# End Data Profiling
 	df_class_distribution = get_class_distribution(df, "class")
 	df_correlation = get_correlation(df, "pearson")
 	df_skew = get_skew(df)
@@ -24,6 +27,9 @@ def get_dimension(df):
 
 def get_data_types(df):
 	return df.dtypes
+
+def get_data_information(df):
+	return df.info()
 
 def get_descriptive_statistics(df):
 	run_option()
