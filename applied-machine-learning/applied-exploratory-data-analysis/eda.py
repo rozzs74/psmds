@@ -8,55 +8,7 @@ import missingno as msno
 import numpy
 
 def main():
-	columns = get_columns()
-	df = read_csv(PATH, names=columns)
-	df_head = get_peek(df, 10)
-	# # print(df_head)
-	# df_dimension = get_dimension(df)
-	# # print(df_dimension)
-	# df_data_types = get_data_types(df)
-	# df_correlation = get)df_correlation(df)
-	# print(df_correlation)
-	# # print(df_data_types)
-	# df_information = get_data_information(df)
-	# print(df_information)
-	# df_descriptive_statistics = get_descriptive_statistics(df)
-	# print(df_descriptive_statistics)
-	# df_missing_value = get_missing_value(df)
-	# print(df_missing_value)
-	# missing_plot(df)
-	# missing_heat_map(df)
-	new_df = impute_missing_value(df)
-	# new_df_head = get_peek(new_df, 20)
-
-	# new_df.diabetes.value_counts().plot(kind="bar")
-	# pyplot.title("Target Variables(0=Negative Diabetes, 1=Positive Diabetes)")
-	# show_plot()
-
-	numerical_values = new_df.select_dtypes(include=[numpy.number])
-
-
-
-	new_df_class_distribution = get_class_distribution(new_df, "diabetes")
-	positive = new_df_class_distribution.iloc[0]
-	negative = new_df_class_distribution[1]
-	pyplot.title("Diabetes class distribution")
-	pyplot.pie([positive, negative], labels=["Postive", "Negative"])
-	show_plot()
-
-
-
-	# numerical_values.nunique().sort_values()
-	# show_density_plots(numerical_values)
-	show_histogram(numerical_values)
-
-	
-	new_df_skew = get_skew(new_df)
-	new_df_corr = get_correlation(new_df)
-	show_correlation_plot(new_df_corr, columns)
-
-	show_scatter_plot(new_df)
-	show_whisker_plots(new_df)
+	pass
 
 def get_columns():
 	return ["pregnant", "glucose", "pressue", "triceps", "insulin", "mass", "pedigree", "age", "diabetes"]
@@ -83,6 +35,9 @@ def get_correlation(df):
 
 def get_skew(df):
 	return df.skew()
+
+def get_kurtosis(df):
+    return df.kurtosis()
 
 def get_class_distribution(df, name):
 	return df.groupby(name).size()
