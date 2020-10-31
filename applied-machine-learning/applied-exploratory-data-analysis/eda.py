@@ -8,10 +8,60 @@ import missingno as msno
 import numpy
 
 def main():
-	pass
+	columns = get_columns()
+	# print(columns)
+	df = read_csv(PATH, names=columns)
+	df_head = get_peek(df, 10)	
+	# print(df_head)
+	df_dimension = get_dimension(df)
+	# print(df_dimension)
+	df_data_types = get_data_types(df)
+	# print(df_data_types)
+	# df_information = get_data_information(df)
+	# print(df_information)
+	df_correlation = get_correlation(df)
+	# print(df_correlation)
+	df_descriptive_statistics = get_descriptive_statistics(df)
+	# print(df_descriptive_statistics)
+	df_missing_value = get_missing_value(df)
+	# print(df_missing_value)
+	# missing_plot(df)
+	# missing_heat_map(df)
+	new_df = impute_missing_value(df)
+	# new_df_head = get_peek(new_df, 10)
+	# new_df_missing_value = get_missing_value(new_df)
+
+	# Target Variables
+	# new_df.diabetes.value_counts().plot(kind="bar")
+	# pyplot.title("Target Variables (0=Negative Diabetes, 1=Positive Diabetes)")
+	# show_plot()
+
+	numerical_variables = new_df.select_dtypes(include=[numpy.number])
+	# print(numerical_variables)
+
+	# new_df_class_distribution = get_class_distribution(new_df, "diabetes")
+	# positive = new_df_class_distribution.iloc[1]
+	# negative = new_df_class_distribution.iloc[0]
+	# pyplot.title("Diabetes class distribution")
+	# pyplot.pie([positive, negative], labels=["Positive", "Negative"])
+	# show_plot()
+
+	sorted_numerical_variables = numerical_variables.nunique().sort_values()
+	# print(sorted_numerical_variables)
+
+	# show_density_plots(numerical_variables)
+	# show_histogram(numerical_variables)
+
+	new_df_skew = get_skew(new_df)
+	# print(new_df_skew)
+	new_df_kurtosis = get_kurtosis(new_df)
+	new_df_correlation = get_correlation(new_df)
+	# show_correlation_plot(new_df_correlation, columns)
+	# show_scatter_plot(new_df)
+	show_whisker_plots(new_df)
 
 def get_columns():
-	return ["pregnant", "glucose", "pressue", "triceps", "insulin", "mass", "pedigree", "age", "diabetes"]
+	return ["pregnant", "glucose", "pressure", "triceps", "insulin", "mass", "pedigree", "age", "diabetes"]
 
 def get_peek(df, n):
 	return df.head(n)
