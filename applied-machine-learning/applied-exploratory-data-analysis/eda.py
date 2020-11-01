@@ -60,6 +60,7 @@ def main():
 	# show_scatter_plot(new_df)
 	show_whisker_plots(new_df)
 
+
 def get_columns():
 	return ["pregnant", "glucose", "pressure", "triceps", "insulin", "mass", "pedigree", "age", "diabetes"]
 
