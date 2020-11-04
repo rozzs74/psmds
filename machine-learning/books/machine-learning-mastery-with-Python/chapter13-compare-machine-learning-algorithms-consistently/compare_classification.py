@@ -40,7 +40,7 @@ if __name__ == "__main__":
 		i += 1
 		if i == len(models):
 			fig = pyplot.figure()
-			fig.suptitle("Algorithms Comparison")
+			fig.suptitle("Algorithms Comparison For Classification")
 			ax = fig.add_subplot(111)
 			pyplot.boxplot(results)
 			ax.set_xticklabels(names)
