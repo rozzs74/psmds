@@ -1,3 +1,4 @@
+# 1) Define the Problem
 # Load libraries
 import numpy
 from numpy import arange
@@ -34,7 +35,7 @@ def main():
 	df_descriptive_statistics = df.describe()
 	df_corr = df.corr(method="pearson")
 	set_option("precision", 2)
-
+	# 2) Analyze the Data
 	# Unimodal Visualization
 	# df.hist(sharex=False, sharey=False, xlabelsize=1, ylabelsize=1)
 	# pyplot.show()
@@ -62,12 +63,14 @@ def main():
 	# ax.set_yticklabels(columns)
 	# pyplot.show()
 
+	# 3) Prepare the Data
 	# Split-out validation dataset
 	array = df.values
 	X = array[:,0:13]
 	Y = array[:,13]
 	X_train, X_test, Y_train, Y_test =  train_test_split(X, Y, test_size=0.20, random_state=7)
 
+	# 4) Evaluate Algorithms
 	# Spot-check algorithm baseline
 	# models = [("LR", LinearRegression()), ("LASSO", Lasso()), ("EN", ElasticNet()), ("KNN", KNeighborsRegressor()), ("CART", DecisionTreeRegressor()), ("SVR", SVR())]
 	# i = 0
@@ -163,7 +166,7 @@ def main():
 	# 		ax.set_xticklabels(ensemble_name)
 	# 		pyplot.show()
 	# 		break
-
+	# 5) Improve Results
 	# Tune ensembe method
 	# scaler = StandardScaler().fit(X_train)
 	# rescaledX = scaler.transform(X_train)
@@ -180,6 +183,7 @@ def main():
 		# print(f"mean={mean}, std={stdev}, params={param }")
 	
 	# Finalize model
+	# 7) Present Results
 	scaler = StandardScaler().fit(X_train)
 	rescaledX = scaler.transform(X_train)
 	model = ExtraTreesRegressor(random_state=7, n_estimators=1000)
