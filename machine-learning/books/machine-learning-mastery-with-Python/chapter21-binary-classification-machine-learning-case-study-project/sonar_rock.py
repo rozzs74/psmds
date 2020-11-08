@@ -52,17 +52,36 @@ def main():
 
 
 	# Evaluate Algorithms Standardize
-	pipelines = [
-		("ScaledLR", Pipeline([("Scaler", StandardScaler()),("LR", LogisticRegression())])),
-		("ScaledLDA", Pipeline([("Scaler", StandardScaler()),("LDA", LinearDiscriminantAnalysis())])),
-		("ScaledKNN", Pipeline([("Scaler", StandardScaler()),("KNN", KNeighborsClassifier())])),
-		("ScaledCART", Pipeline([("Scaler", StandardScaler()),("CART", LogisticRegression())])),
-		("ScaledNB", Pipeline([("Scaler", StandardScaler()),("NB", GaussianNB())])),
-		("ScaledSVM", Pipeline([("Scaler", StandardScaler()),("SVM", SVC())]))
-	]
+	# pipelines = [
+	# 	("ScaledLR", Pipeline([("Scaler", StandardScaler()),("LR", LogisticRegression())])),
+	# 	("ScaledLDA", Pipeline([("Scaler", StandardScaler()),("LDA", LinearDiscriminantAnalysis())])),
+	# 	("ScaledKNN", Pipeline([("Scaler", StandardScaler()),("KNN", KNeighborsClassifier())])),
+	# 	("ScaledCART", Pipeline([("Scaler", StandardScaler()),("CART", LogisticRegression())])),
+	# 	("ScaledNB", Pipeline([("Scaler", StandardScaler()),("NB", GaussianNB())])),
+	# 	("ScaledSVM", Pipeline([("Scaler", StandardScaler()),("SVM", SVC())]))
+	# ]
 
-	scaled_model_results, scaled_model_name, scaled_stash_models = evaluate_algorithms_standardize(10, 7, "accuracy", X_train, Y_train, pipelines)
-	show_whisker_plots_for_evaluation(scaled_model_results, scaled_model_name, "Scaled Algorithms Comparison")
+	# scaled_model_results, scaled_model_name, scaled_stash_models = evaluate_algorithms_standardize(10, 7, "accuracy", X_train, Y_train, pipelines)
+	# show_whisker_plots_for_evaluation(scaled_model_results, scaled_model_name, "Scaled Algorithms Comparison")
+
+	# Tuning scaled Algorithm (SVM, CART, LR)
+	tune_svm(X_train, Y_train)
+
+
+def tune_svm(X, Y):
+	scaler = StandardScaler().fit(X)
+	rescaledX = scaler.transform(X)
+	param_grid = {"C":  [0.1, 0.3, 0.5, 0.7, 0.9, 1.0, 1.3, 1.5, 1.7, 2.0], "kernel": ["linear", "poly", "rbf", "sigmoid"]}
+	model_svc = SVC()
+	kfold = KFold(n_splits=10, random_state=7, shuffle=True)
+	grid = GridSearchCV(estimator=model_svc, param_grid=param_grid, scoring="accuracy", cv=kfold)
+	grid_result = grid.fit(rescaledX, Y)
+	print(f"Best score{grid_result.best_score_} Params:{grid_result.best_params_}")
+	svm_means = grid_result.cv_results_["mean_test_score"]
+	svm_stds = grid_result.cv_results_["std_test_score"]
+	svm_params = grid_result.cv_results_["params"]
+	for mean, std, param in zip(svm_means, svm_stds, svm_params):
+		print(f"SVM mean={mean}, std={std}, param={param}")
 
 def show_whisker_plots_for_evaluation(results, names, title):
 	fig = pyplot.figure()
