@@ -73,7 +73,33 @@ def main():
 	# tune_cart(X_train, Y_train)
 
 	#LR
-	tune_logistic_regression(X_train, Y_train)
+	# tune_logistic_regression(X_train, Y_train)
+
+	# Ensemble
+	ensembles = [
+		("AB", AdaBoostClassifier()),
+		("GBM", GradientBoostingClassifier()),
+		("RF", RandomForestClassifier()),
+		("ET", ExtraTreesClassifier())
+	]
+	make_ensemble_methods(ensembles, X_train, Y_train, "Ensemble Algorithm Comparison")
+
+def make_ensemble_methods(ensembles, X, Y, title):
+	ensembles_results = []
+	ensembles_names = []
+	j = 0
+
+	while j <= len(ensembles):
+		el = ensembles[j]
+		kfold = KFold(n_splits=10, random_state=7, shuffle=True)
+		cv_result = cross_val_score(el[1], X, Y, cv=kfold, scoring="accuracy")
+		ensembles_results.append(cv_result)
+		ensembles_names.append(el[0])
+		print(f"Ensemble method:{el[0]} mean:{cv_result.mean()*100:.3f}% std:{cv_result.std()*100:.3f}%")
+		j += 1
+		if j == len(ensembles):
+			show_whisker_plots_for_evaluation(ensembles_results, ensembles_names, title)
+			break
 
 def tune_logistic_regression(X, Y, skip_summary=False):
 	pipe = Pipeline([("Scaler", StandardScaler()), ("LR", LogisticRegression())])
