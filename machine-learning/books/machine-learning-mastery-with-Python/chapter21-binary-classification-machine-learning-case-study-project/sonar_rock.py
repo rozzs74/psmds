@@ -72,14 +72,38 @@ def main():
 	# CART	
 	# tune_cart(X_train, Y_train)
 
+	#LR
+	tune_logistic_regression(X_train, Y_train)
+
+def tune_logistic_regression(X, Y, skip_summary=False):
+	pipe = Pipeline([("Scaler", StandardScaler()), ("LR", LogisticRegression())])
+	param_grid = {
+		"LR__C": [1.0, 0.1, 0.01, 100, 20, 10],
+		"LR__solver": ["lbfgs", "newton-cg", "liblinear"],
+		"LR__penalty": ["l2"],
+		"LR__max_iter":[400, 500, 1000]
+	}
+	kfold = KFold(n_splits=10, random_state=7, shuffle=True)
+	grid = GridSearchCV(estimator=pipe, param_grid=param_grid, scoring="accuracy", cv=kfold)
+	grid_result = grid.fit(X, Y)
+	print(f"LR best score:{grid_result.best_score_*100:.3f}% params:{grid_result.best_params_}")
+
+	if skip_summary:
+		pass
+	else:
+		lr_means = grid_result.cv_results_["mean_test_score"]
+		lr_stds = grid_result.cv_results_["std_test_score"]
+		lr_params = grid.cv_results_["params"]
+		for mean, std, param in zip(lr_means, lr_stds, lr_params):
+			print(f"LR mean={mean}, std={std}, param={param}")
+
 def tune_cart(X, Y, skip_summary=False):
-	scaler = StandardScaler().fit(X)
-	rescaledX =scaler.transform(X)
-	param_grid = {"n_estimators":numpy.array([10, 50, 100, 500, 1000]) }
+	pipe = Pipeline([("Scaler", StandardScaler()), ("CART", ExtraTreesClassifier())])
+	param_grid = {"CART__n_estimators": numpy.array([10, 50, 100, 500, 1000])}
 	model_cart = ExtraTreesClassifier()
 	kfold = KFold(n_splits=10, random_state=7, shuffle= True)
-	grid = GridSearchCV(estimator=model_cart, param_grid=param_grid, scoring="accuracy", cv=kfold)
-	grid_result = grid.fit(rescaledX, Y)
+	grid = GridSearchCV(estimator=pipe, param_grid=param_grid, scoring="accuracy", cv=kfold)
+	grid_result = grid.fit(X, Y)
 	print(f"CART best score:{grid_result.best_score_*100:.3f}% params:{grid_result.best_params_}")
 
 	if skip_summary == False:
@@ -93,13 +117,11 @@ def tune_cart(X, Y, skip_summary=False):
 		pass
 
 def tune_svm(X, Y):
-	scaler = StandardScaler().fit(X)
-	rescaledX = scaler.transform(X)
-	param_grid = {"C":  [0.1, 0.3, 0.5, 0.7, 0.9, 1.0, 1.3, 1.5, 1.7, 2.0], "kernel": ["linear", "poly", "rbf", "sigmoid"]}
-	model_svc = SVC()
+	pipe = Pipeline([("Scaler", StandardScaler()), ("SVC", SVC())])
+	param_grid = {"SVC__C":  [0.1, 0.3, 0.5, 0.7, 0.9, 1.0, 1.3, 1.5, 1.7, 2.0], "SVC__kernel": ["linear", "poly", "rbf", "sigmoid"]}
 	kfold = KFold(n_splits=10, random_state=7, shuffle=True)
-	grid = GridSearchCV(estimator=model_svc, param_grid=param_grid, scoring="accuracy", cv=kfold)
-	grid_result = grid.fit(rescaledX, Y)
+	grid = GridSearchCV(estimator=pipe, param_grid=param_grid, scoring="accuracy", cv=kfold)
+	grid_result = grid.fit(X, Y)
 	print(f"Best score{grid_result.best_score_} Params:{grid_result.best_params_}")
 	svm_means = grid_result.cv_results_["mean_test_score"]
 	svm_stds = grid_result.cv_results_["std_test_score"]
