@@ -6,7 +6,7 @@ from pandas import read_csv
 from pandas import set_option
 from pandas import concat
 from pandas.plotting import scatter_matrix
-
+from sklearn import tree
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import KFold
@@ -65,8 +65,32 @@ def main():
 	# show_whisker_plots_for_evaluation(scaled_model_results, scaled_model_name, "Scaled Algorithms Comparison")
 
 	# Tuning scaled Algorithm (SVM, CART, LR)
-	tune_svm(X_train, Y_train)
+	
+	# SVM
+	# tune_svm(X_train, Y_train)
 
+	# CART	
+	# tune_cart(X_train, Y_train)
+
+def tune_cart(X, Y, skip_summary=False):
+	scaler = StandardScaler().fit(X)
+	rescaledX =scaler.transform(X)
+	param_grid = {"n_estimators":numpy.array([10, 50, 100, 500, 1000]) }
+	model_cart = ExtraTreesClassifier()
+	kfold = KFold(n_splits=10, random_state=7, shuffle= True)
+	grid = GridSearchCV(estimator=model_cart, param_grid=param_grid, scoring="accuracy", cv=kfold)
+	grid_result = grid.fit(rescaledX, Y)
+	print(f"CART best score:{grid_result.best_score_*100:.3f}% params:{grid_result.best_params_}")
+
+	if skip_summary == False:
+		cart_means = grid_result.cv_results_["mean_test_score"]
+		cart_stds = grid_result.cv_results_["std_test_score"]
+		cart_params = grid_result.cv_results_["params"]
+		
+		for mean, std, param in zip(cart_means, cart_stds, cart_params):
+			print(f"CART mean={mean}, std={std}, param={param}")
+	else:
+		pass
 
 def tune_svm(X, Y):
 	scaler = StandardScaler().fit(X)
