@@ -76,13 +76,29 @@ def main():
 	# tune_logistic_regression(X_train, Y_train)
 
 	# Ensemble
-	ensembles = [
-		("AB", AdaBoostClassifier()),
-		("GBM", GradientBoostingClassifier()),
-		("RF", RandomForestClassifier()),
-		("ET", ExtraTreesClassifier())
-	]
-	make_ensemble_methods(ensembles, X_train, Y_train, "Ensemble Algorithm Comparison")
+	# ensembles = [
+	# 	("AB", AdaBoostClassifier()),
+	# 	("GBM", GradientBoostingClassifier()),
+	# 	("RF", RandomForestClassifier()),
+	# 	("ET", ExtraTreesClassifier())
+	# ]
+	# make_ensemble_methods(ensembles, X_train, Y_train, "Ensemble Algorithm Comparison")
+
+	# Finalize the model ExtraTree
+
+	finalize_model(X_train, Y_train, X_validation, Y_validation)
+
+def finalize_model(X_train, Y_train, X_validation, Y_validation):
+	scaler = StandardScaler().fit(X_train)
+	rescaledX = scaler.transform(X_train)
+	model = SVC(C=1.5, kernel="rbf")
+	model.fit(rescaledX, Y_train)
+	rescaledValidationX = scaler.transform(X_validation)
+	predictions = model.predict(rescaledValidationX)
+	print(f"Accuracy Score {accuracy_score(Y_validation, predictions)*100:.3f}%")
+	print(f"Confusion Matrix {confusion_matrix(Y_validation, predictions)}")
+	print(f"Classification Report {classification_report(Y_validation, predictions)}")
+
 
 def make_ensemble_methods(ensembles, X, Y, title):
 	ensembles_results = []
@@ -124,8 +140,8 @@ def tune_logistic_regression(X, Y, skip_summary=False):
 			print(f"LR mean={mean}, std={std}, param={param}")
 
 def tune_cart(X, Y, skip_summary=False):
-	pipe = Pipeline([("Scaler", StandardScaler()), ("CART", ExtraTreesClassifier())])
-	param_grid = {"CART__n_estimators": numpy.array([10, 50, 100, 500, 1000])}
+	pipe = Pipeline([("Scaler", StandardScaler()), ("CART", DecisionTreeClassifier())])
+	param_grid = {"CART__criterion": ["gini", "entropy"], "CART__max_depth": numpy.array([10, 50, 100, 500, 1000])}
 	model_cart = ExtraTreesClassifier()
 	kfold = KFold(n_splits=10, random_state=7, shuffle= True)
 	grid = GridSearchCV(estimator=pipe, param_grid=param_grid, scoring="accuracy", cv=kfold)
