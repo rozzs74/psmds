@@ -15,7 +15,7 @@ from typing import Set
 
 from numpy import ndarray
 
-def understand_data(df):
+def understand_data(df) -> None:
 	is_there_any_duplicates: bool = find_duplicates(df)
 	if is_there_any_duplicates:
 		df_duplicates = get_duplicates_row(df, "")
@@ -104,7 +104,7 @@ def drop_duplicates(df):
 def show_missing_values(df) -> Series:
 	return df.isnull().sum()
 
-def main():
+def main() -> None:
 	# Understanding the Data
 	df  = read_csv("./students.csv")
 	understand_data(df)
