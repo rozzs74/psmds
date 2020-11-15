@@ -96,6 +96,9 @@ def get_missing_value(df):
 	missing_value.sort_values(by="percentage_missing", ascending=False, inplace=True)
 	return missing_value
 
+def get_class_distribution(df, name):
+	return df.groupby(name).size()
+
 def get_missing_value_percentage(df):
 	return round(100 * (df.isnull().sum() / len(df)), 2)
 
@@ -204,5 +207,5 @@ def show_plot() -> None:
 	pyplot.show()
 
 if __name__ == "__main__":
-    PATH = "./sonar.csv"
+    PATH: str = "./sonar.csv"
     main()
