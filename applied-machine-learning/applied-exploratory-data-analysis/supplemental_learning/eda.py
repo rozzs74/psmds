@@ -89,8 +89,6 @@ def get_data_information(df):
 def get_columns(df) -> Index:
 	return df.columns
 
-def find_duplicates(df) -> bool:
-	return df.duplicated().any()
 
 def get_duplicates_row(df, name, all_rows=True):
 	if all_rows:
@@ -98,6 +96,12 @@ def get_duplicates_row(df, name, all_rows=True):
 	else:
 		return df[df.duplicated(name)]
 
+def find_duplicates(df) -> bool:
+	return df.duplicated().any()
+
+def check_missing_values(df) -> bool:
+	return df.isnull().values.any()
+	
 def drop_duplicates(df):
 	return df.drop_duplicates()
 
