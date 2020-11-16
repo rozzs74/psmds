@@ -73,17 +73,13 @@ def data_profiling(df) -> bool:
     return True
 
 def visualization(df) -> None:
-	# Missingness
-	missing_heat_map(df)
-	missing_plot(df)
+    # Univariate 
+    show_histogram(df)
+    show_density_plots(df)
 
-	# Univariate 
-	show_histogram(df)
-	show_density_plots(df)
-
-	# Multivariate 
-	df_correlation = get_correlation(df, "pearson")
-	show_correlation_plot(df_correlation)
+    # Multivariate 
+    df_correlation = get_correlation(df, "pearson")
+    show_correlation_plot(df_correlation)
 
 def clean_data(df, default=True) -> DataFrame:
     if default:
@@ -205,18 +201,6 @@ def show_correlation_plot(correlations) -> None:
 	ax = fig.add_subplot(111)
 	cax = ax.matshow(correlations, vmin=-1, vmax=1, interpolation="none")
 	fig.colorbar(cax)
-	show_plot()
-
-def missing_plot(df) -> None:
-	mask = df.isnull()
-	nullable_columns = df.columns[mask.any()].tolist()
-	msno.matrix(df[nullable_columns].sample(500))
-	show_plot()
-
-def missing_heat_map(df) -> None:
-	mask = df.isnull()
-	nullable_columns = df.columns[mask.any()].tolist()
-	msno.heatmap(df[nullable_columns], figsize=(18, 18))
 	show_plot()
 
 def show_plot() -> None:
