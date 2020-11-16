@@ -91,7 +91,7 @@ def main():
 def finalize_model(X_train, Y_train, X_validation, Y_validation):
 	scaler = StandardScaler().fit(X_train)
 	rescaledX = scaler.transform(X_train)
-	model = SVC(C=1.5, kernel="rbf")
+	model = SVC(C=5, kernel="rbf")
 	model.fit(rescaledX, Y_train)
 	rescaledValidationX = scaler.transform(X_validation)
 	predictions = model.predict(rescaledValidationX)

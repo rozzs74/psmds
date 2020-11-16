@@ -31,6 +31,8 @@ from sklearn.ensemble import AdaBoostClassifier
 from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.ensemble import ExtraTreesClassifier
+from sklearn.ensemble import BaggingClassifier
+from sklearn.ensemble import VotingClassifier
 from sklearn.feature_selection import SelectKBest
 from sklearn.feature_selection import chi2
 from sklearn.feature_selection import RFE
@@ -38,6 +40,9 @@ from sklearn.feature_selection import RFE
 from numpy import ndarray
 from numpy import arange
 from numpy import set_printoptions
+
+from pickle import dump
+from pickle import load
 
 from typing import Tuple
 from typing import List
@@ -62,20 +67,61 @@ def main() -> None:
 	# 	("SVM", SVC())
 	# ]
 	X_train, X_validation, Y_train, Y_validation = get_resampling_data(X, Y, 10, 7)
+
+	#Evaluation Algorithm Baseline
 	# baseline_results: List[set] = evaluate_algorithms_baseline(10, 7, "accuracy", X_train, Y_train, baseline_models)
 	# show_whisker_plots_for_evaluation(baseline_results[0], baseline_results[1], "Evaluation Algorithms Baseline")
-	pipelines: List[set]  = [
-		("ScaledLR", Pipeline([("Scaler", StandardScaler()),("LR", LogisticRegression())])),
-		("ScaledLDA", Pipeline([("Scaler", StandardScaler()),("LDA", LinearDiscriminantAnalysis())])),
-		("ScaledKNN", Pipeline([("Scaler", StandardScaler()),("KNN", KNeighborsClassifier())])),
-		("ScaledCART", Pipeline([("Scaler", StandardScaler()),("CART", LogisticRegression())])),
-		("ScaledNB", Pipeline([("Scaler", StandardScaler()),("NB", GaussianNB())])),
-		("ScaledSVM", Pipeline([("Scaler", StandardScaler()),("SVM", SVC())]))
-	]
 
-	scaled_results: list = evaluate_algorithms_standardize(10, 7, "accuracy", X_train, Y_train, pipelines)
-	show_whisker_plots_for_evaluation(scaled_results[0], scaled_results[1], "Evaluation Algorithms Standardize")
+	#Evaluation Alagorithms Standardize
+	# pipelines: List[set]  = [
+	# 	("ScaledLR", Pipeline([("Scaler", StandardScaler()),("LR", LogisticRegression())])),
+	# 	("ScaledLDA", Pipeline([("Scaler", StandardScaler()),("LDA", LinearDiscriminantAnalysis())])),
+	# 	("ScaledKNN", Pipeline([("Scaler", StandardScaler()),("KNN", KNeighborsClassifier())])),
+	# 	("ScaledCART", Pipeline([("Scaler", StandardScaler()),("CART", LogisticRegression())])),
+	# 	("ScaledNB", Pipeline([("Scaler", StandardScaler()),("NB", GaussianNB())])),
+	# 	("ScaledSVM", Pipeline([("Scaler", StandardScaler()),("SVM", SVC())]))
+	# ]
 
+	# scaled_results: list = evaluate_algorithms_standardize(10, 7, "accuracy", X_train, Y_train, pipelines)
+	# show_whisker_plots_for_evaluation(scaled_results[0], scaled_results[1], "Evaluation Algorithms Standardize")
+
+	#Improve Accuracy
+	#Algorithm Tuning
+	# tune_svm(X_train, Y_train)
+	# tune_knn(X_train, Y_train)
+	#Ensemble
+	# Bagging
+	# bagging_ensembles: List[set] = [
+	# 	("RF", RandomForestClassifier()),
+	# 	("ET", ExtraTreesClassifier()),
+	# 	("BC", BaggingClassifier(base_estimator=DecisionTreeClassifier(), n_estimators=100, random_state=7))
+	# ]
+	# bagging_ensembles_results: list = make_ensemble_methods(bagging_ensembles, X_train, Y_train)
+	# show_whisker_plots_for_evaluation(bagging_ensembles_results[0], bagging_ensembles_results[1], "Ensemble Bagging Algorithm Comparison")
+	#Boosting
+	# boosting_ensembles: List[set] = [
+	# 	("AB", AdaBoostClassifier()),
+	# 	("GBM", GradientBoostingClassifier())
+	# ]
+	# boosting_ensembles_results: list = make_ensemble_methods(boosting_ensembles, X_train, Y_train)
+	# show_whisker_plots_for_evaluation(boosting_ensembles_results[0], boosting_ensembles_results[1], "Ensemble Boosting Algorithm Comparison")
+
+	#Majority Voting
+	# voting_ensembles: List[set] = [
+	# 	("KNN2", KNeighborsClassifier(n_neighbors=2)),
+	# 	("KNN4", KNeighborsClassifier(n_neighbors=4)),
+	# 	("KNN6", KNeighborsClassifier(n_neighbors=6)),
+	# 	("KNN8", KNeighborsClassifier(n_neighbors=8)),
+	# 	("KNN10", KNeighborsClassifier(n_neighbors=10))
+	# ]
+	# scores: float = majority_voting(voting_ensembles, X_train, Y_train)
+
+	#Finalize Model
+	# svc_model: SVC = finalize_model(X_train, Y_train, X_validation, Y_validation)
+	# filename: str = "svm_finalized_model.sav"
+	# save_model(filename, svc_model)
+	# load_model(filename, X_validation, Y_validation)
+	
 def understand_data(df) -> None:
     is_there_any_duplicates: bool = find_duplicates(df)
     if is_there_any_duplicates:
@@ -279,14 +325,6 @@ def show_correlation_plot(correlations) -> None:
 	fig.colorbar(cax)
 	show_plot()
 
-def show_whisker_plots_for_evaluation(results, names, title) -> None:
-	fig = pyplot.figure()
-	fig.suptitle(title)
-	ax = fig.add_subplot(111)
-	pyplot.boxplot(results)
-	ax.set_xticklabels(names)
-	show_plot()
-
 def show_plot() -> None:
 	pyplot.show()
 
@@ -326,6 +364,79 @@ def evaluate_algorithms_standardize(fold, seed, metric, X, Y, pipelines) -> list
 		i += 1
 		if i == pipelines_length:
 			return model_results, model_name, stash_models
+
+def tune_svm(X, Y) -> None:
+	pipe: List[set] = Pipeline([("Scaler", StandardScaler()), ("SVC", SVC())])
+	param_grid: dict = {"SVC__C":  [0.1, 0.3, 0.5, 0.7, 0.9, 1.0, 1.3, 1.5, 1.7, 2.0], "SVC__kernel": ["linear", "poly", "rbf", "sigmoid"]}
+	kfold: KFold = KFold(n_splits=10, random_state=7, shuffle=True)
+	grid: GridSearchCV = GridSearchCV(estimator=pipe, param_grid=param_grid, scoring="accuracy", cv=kfold)
+	grid_result: GridSearchCV = grid.fit(X, Y)
+	print(f"SVM Best score{grid_result.best_score_} Params:{grid_result.best_params_}")
+	svm_means: ndarray = grid_result.cv_results_["mean_test_score"]
+	svm_stds: ndarray = grid_result.cv_results_["std_test_score"]
+	svm_params: ndarray = grid_result.cv_results_["params"]
+	for mean, std, param in zip(svm_means, svm_stds, svm_params):
+		print(f"SVM mean={mean}, std={std}, param={param}")	
+
+def tune_knn(X, Y) -> None:
+	pipe: List[set] = Pipeline([("Scaler", StandardScaler()), ("KNN", KNeighborsClassifier())])
+	param_grid: dict= {"KNN__n_neighbors":range(1, 21, 2), "KNN__metric": ["euclidean", "manhattan", "minkowski"], "KNN__weights": ["uniform", "distance"] }
+	kfold: KFold = KFold(n_splits=10, random_state=7, shuffle=True)
+	grid: GridSearchCV = GridSearchCV(estimator=pipe, param_grid=param_grid, scoring="accuracy", cv=kfold)
+	grid_result: GridSearchCV = grid.fit(X, Y)
+	print(f"KNN Best score {grid_result.best_score_} Params:{grid_result.best_params_}")
+	svm_means: ndarray = grid_result.cv_results_["mean_test_score"]
+	svm_stds: ndarray = grid_result.cv_results_["std_test_score"]
+	svm_params: ndarray = grid_result.cv_results_["params"]
+	for mean, std, param in zip(svm_means, svm_stds, svm_params):
+		print(f"KNN mean={mean}, std={std}, param={param}")		
+
+
+def make_ensemble_methods(ensembles, X_train, Y_train) -> None:
+	ensembles_results: list = []
+	ensembles_names: list = []
+	j = 0
+	ensembles_length: int = len(ensembles)
+	while j <= ensembles_length:
+		el = ensembles[j]
+		kfold = KFold(n_splits=10, random_state=7, shuffle=True)
+		cv_result = cross_val_score(el[1], X_train, Y_train, cv=kfold, scoring="accuracy")
+		ensembles_results.append(cv_result)
+		ensembles_names.append(el[0])
+		print(f"Ensemble method:{el[0]} mean:{cv_result.mean()*100:.3f}% std:{cv_result.std()*100:.3f}%")
+		j += 1
+		if j == ensembles_length:
+			return ensembles_results, ensembles_names
+
+def majority_voting(ensembles, X_train, Y_train) -> float:
+	voting_ensembles: VotingClassifier = VotingClassifier(ensembles, voting="hard")
+	kfold: KFold = KFold(n_splits=10, random_state=7, shuffle=True)
+	voting_results = cross_val_score(voting_ensembles, X_train, Y_train, cv=kfold)
+	voting_mean: float = voting_results.mean()* 100
+	voting_std: float = voting_results.std() * 100
+	return voting_mean, voting_std
+
+def finalize_model(X_train, Y_train, X_validation, Y_validation):
+    scaler = StandardScaler().fit(X_train)
+    rescaledX = scaler.transform(X_train)
+    model = SVC(C=5, kernel="rbf")
+    model.fit(rescaledX, Y_train)
+    rescaledValidationX = scaler.transform(X_validation)
+    predictions = model.predict(rescaledValidationX)
+    print(f"Accuracy Score {accuracy_score(Y_validation, predictions)*100:.3f}%")
+    print(f"Confusion Matrix {confusion_matrix(Y_validation, predictions)}")
+    print(f"Classification Report {classification_report(Y_validation, predictions)}")
+    return model
+
+def save_model(file_name, model) -> None:
+	filename: str = file_name
+	mode: str = "wb"
+	dump(model, open(filename, mode))
+
+def load_model(file_name, X_validation, Y_validation) -> None:
+	load_model = load(open(file_name, "rb"))
+	result = load_model.score(X_validation, Y_validation)
+	print(result)
 
 if __name__ == "__main__":
     PATH: str = "./dataset.csv"
