@@ -25,14 +25,19 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 from sklearn.naive_bayes import GaussianNB
+from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
 from sklearn.ensemble import AdaBoostClassifier
 from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.ensemble import ExtraTreesClassifier
+from sklearn.feature_selection import SelectKBest
+from sklearn.feature_selection import chi2
+from sklearn.feature_selection import RFE
 
 from numpy import ndarray
 from numpy import arange
+from numpy import set_printoptions
 
 from typing import Tuple
 from typing import List
@@ -40,8 +45,38 @@ from typing import Dict
 from typing import Set
 
 def main() -> None:
-    df: DataFrame = read_csv(PATH, header=None)
-    understand_data(df)
+	df: DataFrame = read_csv(PATH, header=None)
+	# understand_data(df)
+
+	# Prepare Data
+	n_array: ndarray = df.values	
+	X: ndarray = df.iloc[:, 0 : 60].astype(float)
+	Y: ndarray = df.iloc[:, 60]
+	# feature_selection(X, Y)
+	# recursive_feature_elmination(X, Y)
+	# feature_importance(X, Y)
+	# baseline_models: List[set] = [
+	# 	("LR", LogisticRegression()),
+	# 	("LDA", LinearDiscriminantAnalysis()),
+	# 	("KNN", KNeighborsClassifier()),
+	# 	("CART", DecisionTreeClassifier()),
+	# 	("NB", GaussianNB()),
+	# 	("SVM", SVC())
+	# ]
+	X_train, X_validation, Y_train, Y_validation = get_resampling_data(X, Y, 10, 7)
+	# baseline_results: List[set] = evaluate_algorithms_baseline(10, 7, "accuracy", X_train, Y_train, baseline_models)
+	# show_whisker_plots_for_evaluation(baseline_results[0], baseline_results[1], "Evaluation Algorithms Baseline")
+	pipelines: List[set]  = [
+		("ScaledLR", Pipeline([("Scaler", StandardScaler()),("LR", LogisticRegression())])),
+		("ScaledLDA", Pipeline([("Scaler", StandardScaler()),("LDA", LinearDiscriminantAnalysis())])),
+		("ScaledKNN", Pipeline([("Scaler", StandardScaler()),("KNN", KNeighborsClassifier())])),
+		("ScaledCART", Pipeline([("Scaler", StandardScaler()),("CART", LogisticRegression())])),
+		("ScaledNB", Pipeline([("Scaler", StandardScaler()),("NB", GaussianNB())])),
+		("ScaledSVM", Pipeline([("Scaler", StandardScaler()),("SVM", SVC())]))
+	]
+
+	scaled_results: list = evaluate_algorithms_standardize(10, 7, "accuracy", X_train, Y_train, pipelines)
+	show_whisker_plots_for_evaluation(scaled_results[0], scaled_results[1], "Evaluation Algorithms Standardize")
 
 def understand_data(df) -> None:
     is_there_any_duplicates: bool = find_duplicates(df)
@@ -73,13 +108,53 @@ def data_profiling(df) -> bool:
     return True
 
 def visualization(df) -> None:
-    # Univariate 
-    show_histogram(df)
-    show_density_plots(df)
+	# Univariate 
+	show_histogram(df)
+	show_density_plots(df)
 
-    # Multivariate 
-    df_correlation = get_correlation(df, "pearson")
-    show_correlation_plot(df_correlation)
+	# Multivariate 
+	df_correlation: DataFrame = get_correlation(df, "pearson")
+	show_correlation_plot(df_correlation)
+
+	# Class Distribution
+	df_class_distribution: DataFrame = get_class_distribution(df, 60)
+	rocks: int = df_class_distribution.iloc[1]
+	sonar: int = df_class_distribution.iloc[0]
+	pyplot.title("Class Distribution")
+	pyplot.pie([rocks, sonar], labels=["Rock", "Sonar"])
+	show_plot()
+
+def feature_selection(X, Y) -> None:
+	univariate_selection(X, Y)
+	recursive_feature_elmination(X, Y)
+	feature_importance(X, Y)
+	
+def univariate_selection(X, Y) -> bool:
+	# Univariate Selection
+	test = SelectKBest(score_func=chi2, k=4)
+	fit = test.fit(X, Y)
+	print(fit.scores_)
+	cols = test.get_support()
+	features_df_new = X.iloc[:,cols]
+	print(features_df_new)
+	set_printoptions(precision=3)
+	features = fit.transform(X)
+	print(features[:5])
+	return True
+
+def recursive_feature_elmination(X, Y) -> bool:
+	rfe = RFE(estimator=DecisionTreeClassifier(), n_features_to_select=3)
+	fit = rfe.fit(X, Y)
+	for i in range(X.shape[1]):
+		print('Column: %d, Selected=%s, Rank: %d' % (i, rfe.support_[i], rfe.ranking_[i]))
+	return True
+
+def feature_importance(X, Y) -> bool:
+	model = ExtraTreesClassifier()
+	model.fit(X, Y)
+	set_printoptions(precision=3)
+	print(model.feature_importances_)
+	return True
 
 def clean_data(df, default=True) -> DataFrame:
     if default:
@@ -87,6 +162,9 @@ def clean_data(df, default=True) -> DataFrame:
 
 def get_kurtosis(df) -> DataFrame:
     return df.kurtosis()
+
+def get_resampling_data(X, Y, size, state):
+	return train_test_split(X, Y, test_size=size, random_state=state)
 
 def get_missing_value(df):
 	mask = df.isnull()
@@ -203,9 +281,54 @@ def show_correlation_plot(correlations) -> None:
 	fig.colorbar(cax)
 	show_plot()
 
+def show_whisker_plots_for_evaluation(results, names, title) -> None:
+	fig = pyplot.figure()
+	fig.suptitle(title)
+	ax = fig.add_subplot(111)
+	pyplot.boxplot(results)
+	ax.set_xticklabels(names)
+	show_plot()
+
 def show_plot() -> None:
 	pyplot.show()
 
+def evaluate_algorithms_baseline(fold, seed, metric, X, Y, models) -> list:
+	evaluation_results: list = []
+	model_name: list = []
+	stash_models: list = []
+	i: int= 0
+	model_length: int = len(models)
+	while i <= model_length:
+		el = models[i]
+		kfold = KFold(n_splits=fold, random_state=seed, shuffle=True)
+		score = cross_val_score(el[1], X, Y, cv=kfold, scoring=metric)
+		evaluation_results.append(score)
+		model_name.append(el[0])
+		stash_models.append(el[1])
+		print(f"{el[0]} Mean estimated Accuracy: {score.mean()*100:.3f}%")
+		print(f"{el[0]} Estimated Standard Deviation: {score.std()*100:.3f}%")
+		i += 1
+		if i == model_length:
+			return evaluation_results, model_name, stash_models
+
+def evaluate_algorithms_standardize(fold, seed, metric, X, Y, pipelines) -> list:
+	i = 0
+	model_results = []
+	model_name = []
+	stash_models = []
+	pipelines_length = len(pipelines)
+	while i <= pipelines_length:
+		el = pipelines[i]
+		kfold = KFold(n_splits=10, random_state=7, shuffle=True)
+		cv_results = cross_val_score(el[1], X, Y, cv=kfold, scoring=metric)
+		print(f"Name:{el[0]} Mean:{cv_results.mean()*100:.3f}% STD:{cv_results.std()*100:.3f}%")
+		model_results.append(cv_results)
+		model_name.append(el[0])
+		stash_models.append(el[1])
+		i += 1
+		if i == pipelines_length:
+			return model_results, model_name, stash_models
+
 if __name__ == "__main__":
-    PATH: str = "./sonar.csv"
+    PATH: str = "./dataset.csv"
     main()

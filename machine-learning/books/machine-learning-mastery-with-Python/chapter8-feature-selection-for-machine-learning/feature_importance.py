@@ -16,6 +16,6 @@ def main():
 	model.fit(X, Y)
 	set_printoptions(precision=3)
 	print(model.feature_importances_)
-	print(df.head(1))
+	print(df.head(5))
 if __name__ == "__main__":
 	main()
