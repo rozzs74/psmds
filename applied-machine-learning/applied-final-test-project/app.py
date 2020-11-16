@@ -53,8 +53,6 @@ def main() -> None:
 	X: ndarray = df.iloc[:, 0 : 60].astype(float)
 	Y: ndarray = df.iloc[:, 60]
 	# feature_selection(X, Y)
-	# recursive_feature_elmination(X, Y)
-	# feature_importance(X, Y)
 	# baseline_models: List[set] = [
 	# 	("LR", LogisticRegression()),
 	# 	("LDA", LinearDiscriminantAnalysis()),
