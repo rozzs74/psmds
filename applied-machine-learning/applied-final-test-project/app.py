@@ -57,70 +57,71 @@ def main() -> None:
 	n_array: ndarray = df.values	
 	X: ndarray = df.iloc[:, 0 : 60].astype(float)
 	Y: ndarray = df.iloc[:, 60]
-	# feature_selection(X, Y)
-	# baseline_models: List[set] = [
-	# 	("LR", LogisticRegression()),
-	# 	("LDA", LinearDiscriminantAnalysis()),
-	# 	("KNN", KNeighborsClassifier()),
-	# 	("CART", DecisionTreeClassifier()),
-	# 	("NB", GaussianNB()),
-	# 	("SVM", SVC())
-	# ]
 	X_train, X_validation, Y_train, Y_validation = get_resampling_data(X, Y, 10, 7)
+	feature_selection(X, Y)
+
+	baseline_models: List[set] = [
+		("LR", LogisticRegression()),
+		("LDA", LinearDiscriminantAnalysis()),
+		("KNN", KNeighborsClassifier()),
+		("CART", DecisionTreeClassifier()),
+		("NB", GaussianNB()),
+		("SVM", SVC())
+	]
 
 	#Evaluation Algorithm Baseline
-	# baseline_results: List[set] = evaluate_algorithms_baseline(10, 7, "accuracy", X_train, Y_train, baseline_models)
-	# show_whisker_plots_for_evaluation(baseline_results[0], baseline_results[1], "Evaluation Algorithms Baseline")
+	baseline_results: List[set] = evaluate_algorithms_baseline(10, 7, "accuracy", X_train, Y_train, baseline_models)
+	show_whisker_plots_for_evaluation(baseline_results[0], baseline_results[1], "Evaluation Algorithms Baseline")
 
 	#Evaluation Alagorithms Standardize
-	# pipelines: List[set]  = [
-	# 	("ScaledLR", Pipeline([("Scaler", StandardScaler()),("LR", LogisticRegression())])),
-	# 	("ScaledLDA", Pipeline([("Scaler", StandardScaler()),("LDA", LinearDiscriminantAnalysis())])),
-	# 	("ScaledKNN", Pipeline([("Scaler", StandardScaler()),("KNN", KNeighborsClassifier())])),
-	# 	("ScaledCART", Pipeline([("Scaler", StandardScaler()),("CART", LogisticRegression())])),
-	# 	("ScaledNB", Pipeline([("Scaler", StandardScaler()),("NB", GaussianNB())])),
-	# 	("ScaledSVM", Pipeline([("Scaler", StandardScaler()),("SVM", SVC())]))
-	# ]
+	pipelines: List[set]  = [
+		("ScaledLR", Pipeline([("Scaler", StandardScaler()),("LR", LogisticRegression())])),
+		("ScaledLDA", Pipeline([("Scaler", StandardScaler()),("LDA", LinearDiscriminantAnalysis())])),
+		("ScaledKNN", Pipeline([("Scaler", StandardScaler()),("KNN", KNeighborsClassifier())])),
+		("ScaledCART", Pipeline([("Scaler", StandardScaler()),("CART", LogisticRegression())])),
+		("ScaledNB", Pipeline([("Scaler", StandardScaler()),("NB", GaussianNB())])),
+		("ScaledSVM", Pipeline([("Scaler", StandardScaler()),("SVM", SVC())]))
+	]
 
-	# scaled_results: list = evaluate_algorithms_standardize(10, 7, "accuracy", X_train, Y_train, pipelines)
-	# show_whisker_plots_for_evaluation(scaled_results[0], scaled_results[1], "Evaluation Algorithms Standardize")
+	scaled_results: list = evaluate_algorithms_standardize(10, 7, "accuracy", X_train, Y_train, pipelines)
+	show_whisker_plots_for_evaluation(scaled_results[0], scaled_results[1], "Evaluation Algorithms Standardize")
 
 	#Improve Accuracy
 	#Algorithm Tuning
-	# tune_svm(X_train, Y_train)
-	# tune_knn(X_train, Y_train)
-	#Ensemble
+	tune_svm(X_train, Y_train)
+	tune_knn(X_train, Y_train)
+	# Ensemble
 	# Bagging
-	# bagging_ensembles: List[set] = [
-	# 	("RF", RandomForestClassifier()),
-	# 	("ET", ExtraTreesClassifier()),
-	# 	("BC", BaggingClassifier(base_estimator=DecisionTreeClassifier(), n_estimators=100, random_state=7))
-	# ]
-	# bagging_ensembles_results: list = make_ensemble_methods(bagging_ensembles, X_train, Y_train)
-	# show_whisker_plots_for_evaluation(bagging_ensembles_results[0], bagging_ensembles_results[1], "Ensemble Bagging Algorithm Comparison")
+	bagging_ensembles: List[set] = [
+		("RF", RandomForestClassifier()),
+		("ET", ExtraTreesClassifier()),
+		("BC", BaggingClassifier(base_estimator=DecisionTreeClassifier(), n_estimators=100, random_state=7))
+	]
+	bagging_ensembles_results: list = make_ensemble_methods(bagging_ensembles, X_train, Y_train)
+	show_whisker_plots_for_evaluation(bagging_ensembles_results[0], bagging_ensembles_results[1], "Ensemble Bagging Algorithm Comparison")
 	#Boosting
-	# boosting_ensembles: List[set] = [
-	# 	("AB", AdaBoostClassifier()),
-	# 	("GBM", GradientBoostingClassifier())
-	# ]
-	# boosting_ensembles_results: list = make_ensemble_methods(boosting_ensembles, X_train, Y_train)
-	# show_whisker_plots_for_evaluation(boosting_ensembles_results[0], boosting_ensembles_results[1], "Ensemble Boosting Algorithm Comparison")
+	boosting_ensembles: List[set] = [
+		("AB", AdaBoostClassifier()),
+		("GBM", GradientBoostingClassifier())
+	]
+	boosting_ensembles_results: list = make_ensemble_methods(boosting_ensembles, X_train, Y_train)
+	show_whisker_plots_for_evaluation(boosting_ensembles_results[0], boosting_ensembles_results[1], "Ensemble Boosting Algorithm Comparison")
 
 	#Majority Voting
-	# voting_ensembles: List[set] = [
-	# 	("KNN2", KNeighborsClassifier(n_neighbors=2)),
-	# 	("KNN4", KNeighborsClassifier(n_neighbors=4)),
-	# 	("KNN6", KNeighborsClassifier(n_neighbors=6)),
-	# 	("KNN8", KNeighborsClassifier(n_neighbors=8)),
-	# 	("KNN10", KNeighborsClassifier(n_neighbors=10))
-	# ]
-	# scores: float = majority_voting(voting_ensembles, X_train, Y_train)
+	voting_ensembles: List[set] = [
+		("KNN2", KNeighborsClassifier(n_neighbors=2)),
+		("KNN4", KNeighborsClassifier(n_neighbors=4)),
+		("KNN6", KNeighborsClassifier(n_neighbors=6)),
+		("KNN8", KNeighborsClassifier(n_neighbors=8)),
+		("KNN10", KNeighborsClassifier(n_neighbors=10))
+	]
+	scores: float = majority_voting(voting_ensembles, X_train, Y_train)
 
 	#Finalize Model
-	# svc_model: SVC = finalize_model(X_train, Y_train, X_validation, Y_validation)
-	# filename: str = "svm_finalized_model.sav"
-	# save_model(filename, svc_model)
-	# load_model(filename, X_validation, Y_validation)
+	svc_model: SVC = finalize_model(X_train, Y_train, X_validation, Y_validation)
+	filename: str = "svm_finalized_model.sav"
+	save_model(filename, svc_model)
+	load_model(filename, X_validation, Y_validation)
 	
 def understand_data(df) -> None:
     is_there_any_duplicates: bool = find_duplicates(df)
