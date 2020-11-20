@@ -20,10 +20,33 @@ def understand_data(df) -> None:
 	if is_there_any_duplicates:
 		df_duplicates = get_duplicates_row(df, "")
 		df = drop_duplicates(df)
-	else:
-		data_profiling(df)
+	is_there_any_missing_values: bool = check_missing_values(df)
 
-def data_profiling(df):
+	if is_there_any_missing_values == True:
+		df = clean_data(df)
+
+	is_done: bool = data_profiling(df)
+	if is_done:
+		visualization(df)
+
+def visualization(df) -> None:
+	# Univariate 
+	show_histogram(df)
+	show_density_plots(df)
+
+	# Multivariate 
+	df_correlation: DataFrame = get_correlation(df, "pearson")
+	show_correlation_plot(df_correlation)
+
+	# Class Distribution
+	df_class_distribution: DataFrame = get_class_distribution(df, 60)
+	rocks: int = df_class_distribution.iloc[1]
+	sonar: int = df_class_distribution.iloc[0]
+	pyplot.title("Class Distribution")
+	pyplot.pie([rocks, sonar], labels=["Rock", "Sonar"])
+# 	show_plot()
+
+def data_profiling(df) -> bool:
 	df_head: DataFrame = get_peek(df, 5)
 	df_tail: DataFrame = get_tail(df, 5)
 	df_dimension: Tuple = get_dimension(df)
@@ -39,8 +62,11 @@ def data_profiling(df):
 	df_unique_value: Series = get_unique_values(df)
 	df_unique_values_per_column: ndarray = get_unique_values_per_column(df, "math score")
 	df_null_values: Series = show_missing_values(df)
-def clean_data(df):
-	pass
+	return True
+
+def clean_data(df, default=True) -> DataFrame:
+	if default:
+		return impute_missing_value(df)
 
 def get_kurtosis(df) -> DataFrame:
     return df.kurtosis()
@@ -107,6 +133,43 @@ def drop_duplicates(df):
 
 def show_missing_values(df) -> Series:
 	return df.isnull().sum()
+
+def impute_missing_value(df) -> DataFrame:
+	return df.fillna(0)
+
+def show_density_plots(df) -> None:
+	df.plot(kind="density", subplots=True, layout=(8, 8), sharex=False)
+	show_plot()
+
+def show_histogram(df) -> None:
+	df.hist()
+	show_plot()
+
+def show_scatter_plot(df) -> None:
+	scatter_matrix(df)
+	show_plot()
+
+def show_whisker_plots_for_evaluation(results, names, title) -> None:
+	fig = pyplot.figure()
+	fig.suptitle(title)
+	ax = fig.add_subplot(111)
+	pyplot.boxplot(results)
+	ax.set_xticklabels(names)
+	show_plot()
+
+def show_whisker_plots(df) -> None:
+	df.plot(kind="box", subplots=True, layout=(3, 3), sharex=False, sharey=False)
+	show_plot()
+
+def show_correlation_plot(correlations) -> None:
+	fig = pyplot.figure()
+	ax = fig.add_subplot(111)
+	cax = ax.matshow(correlations, vmin=-1, vmax=1, interpolation="none")
+	fig.colorbar(cax)
+	show_plot()
+
+def show_plot() -> None:
+	pyplot.show()
 
 def main() -> None:
 	# Understanding the Data
