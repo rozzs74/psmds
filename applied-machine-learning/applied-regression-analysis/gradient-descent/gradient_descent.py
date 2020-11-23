@@ -18,7 +18,6 @@ x /= x.max()
 x[:,:5]
 
 
-
 # Gradient Descent
 # Step 1 set theta to be random and close to 0 and 2D array
 Theta: np.ndarray = np.random.rand(2).reshape((1, 2)) * 0.1
