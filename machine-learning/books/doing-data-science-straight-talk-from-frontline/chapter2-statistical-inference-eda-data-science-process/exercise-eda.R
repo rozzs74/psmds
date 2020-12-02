@@ -52,10 +52,10 @@ age_group7 <- ds[ds$Age >= 65, ]
 # browseURL("myplot.pdf")
 
 # Define a new variable to segment or categorize users based on their click behavior.
-age_group7_with_clicks <- age_group7[age_group7$Clicks > 0, ]
+# age_group7_with_clicks <- age_group7[age_group7$Clicks > 0, ]
 # age_group7_without_clicks <- age_group7[age_group7$Clicks <= 0, ]
 
 # Explore the data and make visual and quantitative comparisons across user segments/demographics (<18-year-old males ver‐ sus < 18-year-old females or logged-in versus not, for example).
-# head(age_group7_with_clicks)
-m <- age_group7_with_clicks[age_group7_with_clicks$Gender == 0 & age_group7_with_clicks < 18, ]
-f <- age_group7_with_clicks[age_group7_with_clicks$Gender == 1 & age_group7_with_clicks < 18, ]
+# m <- age_group1[age_group1$Gender == 0, ]
+# head(m)
+# f <- age_group1[age_group1$Gender == 1, ]
