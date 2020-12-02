@@ -70,3 +70,26 @@ for name, Outlook in df.groupby("Outlook"):
 	print(f'Gain(Decision, Outlook) = {IG_decision_Outlook:0.4f}')
 
 # Step 4 Wrap this in Function IG
+
+def IG(data, column, ent_decision=get_entropy(df)):
+    IG_decision = ent_decision
+    for name, temp in data.groupby(column):
+        p_p = len(temp.loc[temp.Decisions == 'P']) / len(temp)
+        p_n = len(temp.loc[temp.Decisions != 'P']) / len(temp)
+
+        entropy_decision = 0
+
+        if p_p != 0:
+            entropy_decision -= (p_p) * np.log2(p_p)
+
+        if p_n != 0:
+            entropy_decision -= (p_n) * np.log2(p_n)
+
+        IG_decision -= (len(temp) / len(df)) * entropy_decision
+    return IG_decision
+
+# Step 5 Use the function
+for col in df.columns[:-1]:
+    print(f'Gain(Decision, {col}) = {IG(df, col):0.4f}')
+
+# Step 6 Repeat this with other column
