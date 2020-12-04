@@ -11,7 +11,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.model_selection import KFold
 
 #Step 1 Read dataset
-df = pd.read_csv("../titanic.csv")
+df = pd.read_csv("./titanic.csv")
 
 # Step 2 Data preprocessing the data is not clead so preprocess is intended
 def preprocess(data):

@@ -9,7 +9,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
 
 #Step 1 Read dataset
-df = pd.read_csv("../titanic.csv")
+df = pd.read_csv("./titanic.csv")
 
 # Step 2 Data preprocessing the data is not clead so preprocess is intended
 def preprocess(data):
