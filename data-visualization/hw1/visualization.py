@@ -63,11 +63,11 @@ for country in countries:
 	top_five.append(a.iloc[1])
 
 
-y = DataFrame({"country": countries, "total years experience per country": top_five})
+y = DataFrame({"country": countries, "number of people": top_five})
 y
 # a = v.loc[v["country"] == "United States"].sum()
 # a[1]
 # # v.iloc[169]
-sns.barplot(x="country",  y="total years experience per country", data=y)
+sns.barplot(x="country",  y="number of people", data=y)
 st.set_option('deprecation.showPyplotGlobalUse', False)
 st.pyplot()
